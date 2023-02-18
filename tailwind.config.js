@@ -15,8 +15,27 @@ module.exports = {
       primary: "#D92B26",
       secondary: "#5A606B",
       gray: "#F5F5F5",
+      darkgray: "#242424",
+      halfblack: "rgba(255, 255, 255, 0.5)",
+      background02: "rgba(22,22,22,0.2)",
+      superdarkgray: "#919191",
+      lightgray: "#F5F5F5",
     },
-    extend: {},
+    letterSpacing: {
+      tightest: "-.075em",
+      tighter: "-.05em",
+      tight: "-.01em",
+      normal: "0",
+      wide: ".01em",
+      wider: ".05em",
+      widest: ".1em",
+      widest: ".25em",
+    },
+    extend: {
+      fontFamily: {
+        raleway: ["Raleway", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
