@@ -1,8 +1,8 @@
-import About from "@/components/About";
-import Advantages from "@/components/Advantages";
+import About from "@/components/index/About";
+import Advantages from "@/components/index/Advantages";
 import Layout from "@/components/Layout";
-import Rent from "@/components/Rent";
-import Services from "@/components/Services";
+import Rent from "@/components/index/Rent";
+import Services from "@/components/index/Services";
 
 export default function Home() {
   return (

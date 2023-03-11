@@ -8,7 +8,7 @@ type sectionProps = {
 
 export default function Section(props: sectionProps) {
   return (
-    <section className="w-full flex flex-col justify-start my-10 h-fit">
+    <section className="w-full flex flex-col justify-start mb-36 h-fit">
       <header className="mb-5 font-bold text-white text-6xl leading-[75px]">{props.header}</header>
       {props.slogan && (
         <h2 className="mb-16 text-halfblack font-medium text-2xl">{props.slogan}</h2>

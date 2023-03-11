@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Button from "./Button";
-import Section from "./Section";
+import Button from "../Button";
+import Section from "../Section";
 
 export default function Rent() {
   const header = (
@@ -21,7 +21,7 @@ export default function Rent() {
   return (
     <Section header={header} slogan={""}>
       <div className="w-full h-[500px] bg-secondary rounded-3xl">
-        <Image src="" alt="" fill />
+        {/* <Image src="" alt="" fill /> */}
       </div>
     </Section>
   );

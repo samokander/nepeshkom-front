@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Section from "./Section";
+import Section from "../Section";
 
 export default function About() {
-  const header = <h1>О компании</h1>;
+  const header = <h2>О компании</h2>;
 
   return (
     <Section header={header} slogan="">
@@ -18,10 +18,10 @@ export default function About() {
           </p>
         </div>
         <div className="rounded-3xl place-self-stretch row-span-2 bg-gray">
-          <Image src="" alt="" fill />
+          {/* <Image src="" alt="" fill /> */}
         </div>
         <div className="rounded-3xl place-self-stretch row-span-2 bg-gray">
-          <Image src="" alt="" fill />
+          {/* <Image src="" alt="" fill /> */}
         </div>
         <div className="place-self-stretch grid grid-cols-3 text-white gap-5">
           <div className="place-self-stretch rounded-3xl flex flex-col justify-between p-5 bg-darkgray">

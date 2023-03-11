@@ -1,12 +1,12 @@
 import InfoCard from "./InfoCard";
-import Section from "./Section";
-import RentWithDriver from "../public/RentWithDriver.png";
-import BasicRent from "../public/BasicRent.png";
-import Transfer from "../public/Transfer.png";
-import PhotoshootRent from "../public/PhotoshootRent.png";
+import Section from "../Section";
+import RentWithDriver from "../../public/RentWithDriver.png";
+import BasicRent from "../../public/BasicRent.png";
+import Transfer from "../../public/Transfer.png";
+import PhotoshootRent from "../../public/PhotoshootRent.png";
 
 export default function Services() {
-  const header = <h1>Услуги</h1>;
+  const header = <h2>Услуги</h2>;
   const slogan = "Сотрудничая с нами, Вы повышаете качество и ценность своей собственности";
   return (
     <Section header={header} slogan={slogan}>
