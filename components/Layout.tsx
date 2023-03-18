@@ -3,13 +3,13 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 export default function Layout(props: React.PropsWithChildren) {
-  return (
-    <div className="flex w-full justify-center">
-      <div className="w-[1180px] font-raleway">
-        <Header />
-        <main>{props.children}</main>
-        <Footer />
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex w-full justify-center lining-nums proportional-nums">
+			<div className="w-[1180px] font-raleway">
+				<Header />
+				<main>{props.children}</main>
+				<Footer />
+			</div>
+		</div>
+	);
 }

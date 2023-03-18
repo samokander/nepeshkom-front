@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
 	return (
@@ -15,20 +16,39 @@ export default function Footer() {
 			</div>
 			<div className="h-0.5 bg-background02 mb-7"></div>
 			<div className="grid grid-cols-3">
-				<address className="not-italic">
-					<p>
-						<span className="text-superdarkgray mb-1">Адрес</span> <br />
-						Томск, Большая Подгорная улица, 87 <br />
-						Режим работы с 9:00 до 21:00
-					</p>
-				</address>
-				<address className="not-italic">
-					<span className="text-superdarkgray mb-1">Телефон</span> <br />
-					+7 999 999-99-99
-				</address>
+				<div className="col-span-1 flex flex-col">
+					<address className="not-italic col-span-1 row-span-1">
+						<p>
+							<span className="text-superdarkgray mb-1">Адрес</span> <br />
+							Томск, Большая Подгорная улица, 87 <br />
+						</p>
+					</address>
+					<div className="flex">
+						<address className="not-italic  mr-10">
+							<span className="text-superdarkgray mb-1 col-span-1 row-span-1">Телефон</span> <br />
+							+7 999 999-99-99
+						</address>
+						<div className="flex flex-row">
+							<div className="bg-white rounded-xl w-12 h-12 flex justify-center items-center mr-3">
+								<Image src="icons/whatsapp.svg" alt="whatsapp icon" width={21} height={21} />
+							</div>
+							<div className="bg-white rounded-xl w-12 h-12 flex justify-center items-center">
+								<Image src="icons/telegram.svg" alt="telegram icon" width={21} height={21} />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="col-span-1 flex flex-col">
+					<span className="text-superdarkgray mb-1">Режим работы</span>
+					<time>Ежедневно с 9:00 до 21:00</time>
+				</div>
 				<div className="text-superdarkgray flex flex-col">
-					<a className="mb-3">Политика конфиденциальности</a>
-					<a className="mb-3">Публичная оферта</a>
+					<Link className="mb-3" href="/policy">
+						Политика конфиденциальности
+					</Link>
+					<Link className="mb-3" href="/oferta">
+						Публичная оферта
+					</Link>
 					<p>Техническая поддержка:</p>
 					<address>support@mail.ru</address>
 				</div>
