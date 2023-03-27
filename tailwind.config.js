@@ -1,38 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./app/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-	theme: {
-		colors: {
-			transparent: "transparent",
-			black: "#0000000",
-			white: "#ffffff",
-			error: "#FF4E4E",
-			background: "#161616",
-			primary: "#D92B26",
-			secondary: "#5A606B",
-			gray: "#F5F5F5",
-			darkgray: "#242424",
-			halfblack: "rgba(255, 255, 255, 0.5)",
-			slightblack: "rgba(255, 255, 255, 0.2)",
-			background02: "rgba(22,22,22,0.2)",
-			superdarkgray: "#919191",
-			lightgray: "#F5F5F5",
-		},
-		letterSpacing: {
-			tightest: "-.075em",
-			tighter: "-.05em",
-			tight: "-.01em",
-			normal: "0",
-			wide: ".01em",
-			wider: ".05em",
-			widest: ".1em",
-			widest: ".25em",
-		},
-		extend: {
-			fontFamily: {
-				raleway: ["Raleway", "sans-serif"],
-			},
-		},
-	},
-	plugins: [],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    colors: {
+      transparent: "transparent",
+      black: "#0000000",
+      white: "#ffffff",
+      error: "#FF4E4E",
+      background: "#161616",
+      primary: "#D92B26",
+      secondary: "#5A606B",
+      gray: "#F5F5F5",
+      darkgray: "#242424",
+      halfblack: "rgba(255, 255, 255, 0.5)",
+      slightblack: "rgba(255, 255, 255, 0.2)",
+      background02: "rgba(22,22,22,0.2)",
+      superdarkgray: "#919191",
+      lightgray: "#F5F5F5",
+      superlightgary: "#D6D6D6",
+    },
+    letterSpacing: {
+      tightest: "-.075em",
+      tighter: "-.05em",
+      tight: "-.01em",
+      normal: "0",
+      wide: ".01em",
+      wider: ".05em",
+      widest: ".1em",
+      widest: ".25em",
+    },
+    extend: {
+      fontFamily: {
+        raleway: ["Raleway", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
 };
