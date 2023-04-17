@@ -1,18 +1,32 @@
+import AutoCard from "@/@types/AutoCard";
 import CarCard from "@/components/CarCard";
 import Layout from "@/components/Layout";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Autos() {
-	const info = {
-		bodywork: "Седан",
-		name: "Kia K5",
-		year: 2019,
-		gear: "АКПП",
-		hp: 150,
-		price: 4490,
-	};
+	const [autos, setAutos] = useState<AutoCard[]>([]);
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const resp = (await axios.get("http://api.vm-f965bd10.na4u.ru/autos")).data as AutoCard[];
+				console.log("asd");
+				console.log(resp);
+				setAutos(resp);
+			} catch (err) {
+				console.error(err);
+			}
+		})();
+	}, []);
+
+	console.log(autos);
+
 	return (
 		<Layout>
-			<CarCard info={info} img="../../public/static/Kia K5/F.jpg" />
+			{autos.map((auto) => (
+				<CarCard {...auto} />
+			))}
 		</Layout>
 	);
 }

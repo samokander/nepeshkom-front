@@ -17,6 +17,8 @@ module.exports = {
 			background02: "rgba(22,22,22,0.2)",
 			superdarkgray: "#919191",
 			lightgray: "#F5F5F5",
+			tint: "rgba(0, 0, 0, 0.2)",
+			shadeofgrey: "#D6D6D6",
 		},
 		letterSpacing: {
 			tightest: "-.075em",

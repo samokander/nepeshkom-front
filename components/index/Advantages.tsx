@@ -10,13 +10,29 @@ export default function Advantages() {
 	const slogan = "Качественный сервис - залог постоянного сотрудничества";
 	return (
 		<Section header={header} slogan={slogan}>
-			<div className="grid grid-cols-11 grid-row-2 gap-5 w-full h-96">
-				<div className="bg-secondary rounded-3xl col-span-3"></div>
-				<div className="bg-secondary rounded-3xl col-span-2"></div>
-				<div className="bg-secondary rounded-3xl col-span-3"></div>
-				<div className="bg-secondary rounded-3xl col-span-3 row-span-2"></div>
-				<div className="bg-secondary rounded-3xl col-span-4"></div>
-				<div className="bg-secondary rounded-3xl col-span-4"></div>
+			<div className="grid grid-cols-3 grid-rows-2 gap-5 w-full h-96">
+				<div className="bg-darkgray rounded-3xl p-5 flex flex-col justify-between">
+					<p className="text-2xl font-bold text-white">№1 обслуживание в Томске</p>
+					<p>Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.</p>
+				</div>
+				<div className="bg-primary rounded-3xl p-5 flex flex-col justify-between">
+					<p className="text-2xl font-bold text-white">Поддержка арендатора 24/7</p>
+					<p>Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.</p>
+				</div>
+				<div className="bg-darkgray rounded-3xl row-span-2 p-5 flex flex-col justify-between">
+					<p className="text-5xl font-bold text-white">
+						Работаем <br /> без залога <br /> и лимита пробега
+					</p>
+					<p>Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.</p>
+				</div>
+				<div className="bg-white rounded-3xl p-5 flex flex-col justify-between">
+					<p className="text-2xl font-bold text-black">Только новые автомобили</p>
+					<p>Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.</p>
+				</div>
+				<div className="bg-darkgray rounded-3xl p-5 flex flex-col justify-between">
+					<p className="text-2xl font-bold text-white">Оформление за 5 минут</p>
+					<p>Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.</p>
+				</div>
 			</div>
 		</Section>
 	);
