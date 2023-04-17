@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import Rent from "@/components/index/Rent";
 import Services from "@/components/index/Services";
 
+
 export default function Home() {
   return (
     <Layout>
