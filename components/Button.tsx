@@ -18,7 +18,6 @@ export default function Button(props: PropsWithChildren & buttonProps) {
 				(props.primary ? " bg-primary text-white" : " bg-lightgray border-solid text-primary w-[194px]")
 			}
 			type="button">
-			href=""
 			<div className={"flex flex-row justify-evenly"}>
 				{props.icon && <Image src={props.icon} alt="" width={20} height={20} className="mr-2" />}
 				{props.children}

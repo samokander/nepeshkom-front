@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useRef, useState } from "react";
+import React, { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { ru } from "date-fns/locale";
 import { format, isValid, parse, isAfter, isBefore } from "date-fns";
 import { DayPicker, DateRange, SelectRangeEventHandler } from "react-day-picker";
@@ -9,16 +9,29 @@ export default function Calendar() {
 	const [selectedRange, setSelectedRange] = useState<DateRange>();
 	const [fromValue, setFromValue] = useState<string>("");
 	const [toValue, setToValue] = useState<string>("");
-	const [inputValue, setInputValue] = useState<string>("");
 	const [isPopperOpen, setIsPopperOpen] = useState(false);
 
 	const popperRef = useRef<HTMLDivElement>(null);
 	const buttonRef = useRef<HTMLAnchorElement>(null);
+	const calendarRef = useRef<HTMLDivElement>(null);
+
 	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
 
 	const popper = usePopper(popperRef.current, popperElement, {
 		placement: "top",
 	});
+
+	useEffect(() => {
+		if (!isPopperOpen) return;
+		function handleClick(e: MouseEvent) {
+			if (calendarRef.current && !calendarRef.current.contains(e.target as Node)) {
+				closePopper();
+			}
+		}
+		window.addEventListener("click", handleClick);
+		// clean up
+		return () => window.removeEventListener("click", handleClick);
+	}, [isPopperOpen]);
 
 	const closePopper = () => {
 		setIsPopperOpen(false);
@@ -71,20 +84,26 @@ export default function Calendar() {
 	};
 
 	return (
-		<div>
+		<div ref={calendarRef}>
 			<div
 				ref={popperRef}
-				className="w-max h-[52px] px-5 flex flex-row flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-xl font-raleway">
+				className="w-max h-12 px-5 flex flex-row flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-xl font-raleway">
 				<input type="text" placeholder="Дата начала аренды" value={fromValue} onChange={handleFromChange} />
 				<p className="mx-3"> — </p>
 				<input type="text" placeholder="Дата конца аренды" value={toValue} onChange={handleToChange} />
 				<a ref={buttonRef} type="button" className="bg-white" aria-label="Pick a date" onClick={handleButtonClick}>
-					<Image src="/Иконки/24px/Calendar.svg" alt="calendar icon" width={24} height={24} />
+					<Image src="icons/Сalendar.svg" alt="calendar icon" width={24} height={24} />
 				</a>
 			</div>
 			{isPopperOpen && (
 				<div>
-					<div tabIndex={-1} style={popper.styles.popper} className="dialog-sheet" {...popper.attributes.popper} ref={setPopperElement} role="dialog">
+					<div
+						tabIndex={-1}
+						style={popper.styles.popper}
+						className="dialog-sheet z-50"
+						{...popper.attributes.popper}
+						ref={setPopperElement}
+						role="dialog">
 						<DayPicker
 							initialFocus={isPopperOpen}
 							mode="range"

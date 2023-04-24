@@ -1,8 +1,10 @@
 import AutoCard from "@/@types/AutoCard";
+import Filter from "@/components/car/Filter";
 import CarCard from "@/components/CarCard";
 import Layout from "@/components/Layout";
+import Section from "@/components/Section";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Autos() {
 	const [autos, setAutos] = useState<AutoCard[]>([]);
@@ -11,8 +13,6 @@ export default function Autos() {
 		(async () => {
 			try {
 				const resp = (await axios.get("http://api.vm-f965bd10.na4u.ru/autos")).data as AutoCard[];
-				console.log("asd");
-				console.log(resp);
 				setAutos(resp);
 			} catch (err) {
 				console.error(err);
@@ -24,10 +24,8 @@ export default function Autos() {
 
 	return (
 		<Layout>
-			{autos.map((auto) => (
-				<CarCard {...auto} />
-			))}
+			<Section header="Автомобили" children={<Filter />} />
+			<div className="w-full flex flex-row flex-wrap gap-5 mb-36">{autos && autos.map((auto) => <CarCard {...auto} />)}</div>
 		</Layout>
 	);
 }
- 

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type sectionProps = {
 	header: ReactNode;
-	slogan: string;
+	slogan?: string;
 	children: ReactNode;
 };
 
