@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import Booking from "../../components/car/Booking";
+import Booking from "../booking";
 
 export default function Car() {
   return (

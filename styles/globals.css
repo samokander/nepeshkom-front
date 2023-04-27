@@ -69,20 +69,45 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.selected_image_flash {
+  border-radius: 20px;
+  animation-name: flash;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
+}
+
 .selected_image {
   border-radius: 20px;
 }
 
-.image_animation {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.selected_image.entering {
+  animation: flash 0.5s forwards;
+}
 
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+.selected_image.entered {
+  animation: flash 0.5s forwards;
+}
+
+.selected_image.exiting {
+  animation: flash 0.5s reverse;
+}
+
+.selected_image.exited {
+  animation: none;
+}
+
+@keyframes flash {
+  from {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.33;
+  }
+  50% {
+    opacity: 0.66;
+  }
+  to {
+    opacity: 1;
   }
 }
