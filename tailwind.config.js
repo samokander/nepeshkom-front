@@ -13,6 +13,7 @@ module.exports = {
 			gray: "#F5F5F5",
 			darkgray: "#242424",
 			halfblack: "rgba(255, 255, 255, 0.5)",
+			halfwhite: "rgba(0, 0, 0, 0.5)",
 			slightblack: "rgba(255, 255, 255, 0.2)",
 			background02: "rgba(22,22,22,0.2)",
 			superdarkgray: "#919191",

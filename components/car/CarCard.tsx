@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./Button";
+import Button from "../Button";
 import AutoCard from "@/@types/AutoCard";
 
 export default function CarCard(props: AutoCard) {
