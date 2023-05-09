@@ -1,8 +1,12 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import Booking from "../../components/car/Booking";
+import { useRouter } from "next/router";
 
 export default function Car() {
+  const router = useRouter();
+  const { carId } = router.query;
+
   return (
     <Layout>
       <nav>
@@ -16,7 +20,7 @@ export default function Car() {
           {}
         </Link>
       </nav>
-      <Booking />
+      <Booking carId={carId} />
     </Layout>
   );
 }

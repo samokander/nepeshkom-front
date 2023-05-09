@@ -1,53 +1,132 @@
 import Image from "next/image";
 import Section from "../Section";
+import Layout from "@/components/Layout";
 
-function Test() {
-	const header = (
-		<h1>
-			<span className="text-white">Kia K5</span>
-		</h1>
-	);
+import { useEffect, useState } from "react";
+import { srcs } from "../../other/slides";
+import MainSlide from "@/components/car/booking/MainSlide";
+import SlideLine from "@/components/car/booking/SlideLine";
+import CarInfo from "@/components/car/booking/CarInfo";
+import Options from "@/components/car/booking/Options";
+import AccordionFAQ from "@/components/car/booking/AccordionFAQ";
 
-	return (
-		<Section header={header} slogan="">
-			<div>
-				<div className="grid grid-cols-6 grid-rows-4 gap-[20px] ">
-					<div className="row-span-3 col-span-4 row-start-1 col-start-1">
-						<img />
-					</div>
-					<div className="row-start-4 col-start-1">
-						<img />
-					</div>
-					<div className="row-start-4 col-start-2">
-						<img />
-					</div>
-					<div className="row-start-4 col-start-3">
-						<img />
-					</div>
-					<div className="row-start-4 col-start-4">
-						<img />
-					</div>
-					<div className="flex flex-col content-between col-start-5 row-span-4 col-span-2 rounded-[16px] items-stretch p-[20px]">
-						<h3 className="mb-[10px]">Период аренды</h3>
-						<span className="mb-[20px]">Кол-во дней: 2</span>
-						<div className="flex flex-row items-center p-[14px] gap-[14px] isolate w-[340px] h-[52px] bg-white border-[1px] rounded-[12px]">
-							<span className="text-sblack font-medium mx-[14px] w-[164px] h-[24px] text-[16px]">Дата начала аренды</span>
-							<Image className="absolute" src="calendar.svg" alt="" />
-							<hr className="w-[1px] h-[50px]" />
-							<div className="">
-								<button className="relative block w-[84px] text-center bg-white border-none h-[24px] font-raleway font-medium text-[16px]"></button>
-								<select>
-									<option value="12:00">12:00</option>
-									<option value="13:00">13:00</option>
-									<option value="15:00">15:00</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</Section>
-	);
+export default function Booking({ carId }: bookingProps) {
+  const [index, setIndex] = useState(0);
+  const [displayedSlides, setDisplayedSlides] =
+    useState<number>(4);
+
+  function handleLeftClick() {
+    if (index > 0) {
+      setIndex((prev) => prev - 1);
+    } else if (index === 0) {
+      setIndex(srcs.length - 1);
+    }
+  }
+
+  function handleRightClick() {
+    if (index < srcs.length - 1) {
+      setIndex((prev) => prev + 1);
+    } else if (index === srcs.length - 1) {
+      setIndex(0);
+    }
+  }
+
+  const header = (
+    <h1>
+      <span className="text-white">Kia K5</span>
+    </h1>
+  );
+
+  return (
+    <Layout>
+      <Section header={header} slogan="">
+        <div className="">
+          <div className="grid grid-cols-6 grid-rows-8 gap-[20px] mb-16 gap">
+            {/* MainSlide */}
+            <MainSlide
+              leftClick={() => handleLeftClick()}
+              rightClick={() => handleRightClick()}
+              _index={index}
+              srcs={srcs}
+            />
+            {/* SlideLine */}
+            <SlideLine
+              srcs={srcs}
+              _displayedSlides={displayedSlides}
+              _setDisplayedSlides={setDisplayedSlides}
+              _index={index}
+            />
+            {/* ОПЦИИ */}
+            <Options />
+
+            {/* info */}
+            <CarInfo
+              features={{
+                brand: { title: "Марка", data: "KIA" },
+                model: { title: "Модель", data: "K5" },
+                year_of_manufacture: {
+                  title: "Год выпуска",
+                  data: "2019",
+                },
+                color: { title: "Цвет", data: "Черный" },
+                body: { title: "Кузов", data: "Седан" },
+                drive: {
+                  title: "Привод",
+                  data: "Передний",
+                },
+                engine_displacementd: {
+                  title: "Объем двигателя",
+                  data: "2.0",
+                },
+                gearbox: {
+                  title: "КПП",
+                  data: "Автомат",
+                },
+                engine_power: {
+                  title: "Мощность двигателя",
+                  data: "200 л.с.",
+                },
+                fuel: {
+                  title: "Топливо",
+                  data: "Бензин 95",
+                },
+                steering_wheel: {
+                  title: "Руль",
+                  data: "Левый",
+                },
+                insurance: {
+                  title: "Страховка",
+                  data: "ОСАГО без ограничений",
+                },
+              }}
+              equipment={{
+                conditioner: {
+                  title: "Кондиционер",
+                  data: "Есть",
+                },
+                alarm_and_autorun: {
+                  title: "Сигнализация и автозапуск",
+                  data: "Автозапуск",
+                },
+                multimedia: {
+                  title: "Мультимедиа",
+                  data: "Bluetooth, AUX, Radio",
+                },
+                tires: {
+                  title: "Резина",
+                  data: "Зимняя (шипы)",
+                },
+                tinting: {
+                  title: "Тонировка задних стекол",
+                  data: "Есть",
+                },
+              }}
+            />
+            <AccordionFAQ header={""} />
+          </div>
+          <section className="flex flex-row justify-items-stretch"></section>
+        </div>
+      </Section>
+    </Layout>
+  );
 }
-
-export default Test;
