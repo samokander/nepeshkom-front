@@ -5,109 +5,113 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
+	padding: 0;
+	margin: 0;
+	height: 100%;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  background-color: #161616;
+	background-color: #161616;
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 28px;
-  height: 10px;
+	position: relative;
+	display: inline-block;
+	width: 28px;
+	height: 10px;
 }
 
 .switch input {
-  display: none;
+	display: none;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  border-radius: 34px;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: -4px;
-  bottom: -3px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  border-radius: 50%;
+	position: absolute;
+	content: "";
+	height: 16px;
+	width: 16px;
+	left: -4px;
+	bottom: -3px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #d92b26;
+	background-color: #d92b26;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+	box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
 }
 
 .selected_image_flash {
-  border-radius: 20px;
-  animation-name: flash;
-  animation-duration: 0.5s;
-  animation-direction: normal;
-  animation-timing-function: ease-out;
+	border-radius: 20px;
+	animation-name: flash;
+	animation-duration: 0.5s;
+	animation-direction: normal;
+	animation-timing-function: ease-out;
 }
 
 .selected_image {
-  border-radius: 20px;
+	border-radius: 20px;
 }
 
 .selected_image.entering {
-  animation: flash 0.5s forwards;
+	animation: flash 0.5s forwards;
 }
 
 .selected_image.entered {
-  animation: flash 0.5s forwards;
+	animation: flash 0.5s forwards;
 }
 
 .selected_image.exiting {
-  animation: flash 0.5s reverse;
+	animation: flash 0.5s reverse;
 }
 
 .selected_image.exited {
-  animation: none;
+	animation: none;
 }
 
 @keyframes flash {
-  from {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.33;
-  }
-  50% {
-    opacity: 0.66;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.33;
+	}
+	50% {
+		opacity: 0.66;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.outer .carousel .slide {
+	background: none;
 }

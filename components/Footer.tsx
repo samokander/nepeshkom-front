@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import TelegramIcon from "./icons/TelegramIcon";
+import WhatsappIcon from "./icons/WhatsappIcon";
 
 export default function Footer() {
 	return (
@@ -28,13 +30,9 @@ export default function Footer() {
 							<span className="text-superdarkgray mb-1 col-span-1 row-span-1">Телефон</span> <br />
 							+7 999 999-99-99
 						</address>
-						<div className="flex flex-row">
-							<div className="bg-white rounded-xl w-12 h-12 flex justify-center items-center mr-3">
-								<Image src="icons/whatsapp.svg" alt="whatsapp icon" width={21} height={21} />
-							</div>
-							<div className="bg-white rounded-xl w-12 h-12 flex justify-center items-center">
-								<Image src="icons/telegram.svg" alt="telegram icon" width={21} height={21} />
-							</div>
+						<div className="flex flex-row flex-start gap-5">
+							<TelegramIcon />
+							<WhatsappIcon />
 						</div>
 					</div>
 				</div>
