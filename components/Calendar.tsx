@@ -91,7 +91,12 @@ export default function Calendar() {
 				<input type="text" placeholder="Дата начала аренды" value={fromValue} onChange={handleFromChange} />
 				<p className="mx-3"> — </p>
 				<input type="text" placeholder="Дата конца аренды" value={toValue} onChange={handleToChange} />
-				<a ref={buttonRef} type="button" className="bg-white" aria-label="Pick a date" onClick={handleButtonClick}>
+				<a
+					ref={buttonRef}
+					type="button"
+					className="bg-white hover:cursor-pointer"
+					aria-label="Pick a date"
+					onClick={handleButtonClick}>
 					<Image src="icons/Сalendar.svg" alt="calendar icon" width={24} height={24} />
 				</a>
 			</div>
