@@ -8,8 +8,7 @@ export default function Options() {
 
   return (
     <div
-      className="w-[25%] h-[65%] max-h-[408px] bg-[#242424] rounded-[20px]
-           border-border_lightgray border-[1px] p-5 flex flex-col gap-[20px] items-center
+      className="w-[25%] h-[65%] max-h-[408px] bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-5 flex flex-col gap-[20px] items-center
             text-[16px] font-bold text-primary"
     >
       <button

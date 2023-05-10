@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-      <Link href="/personal-acount">
+      <Link href="/personal-account">
         <Button icon="icons/Account.svg" primary={false}>
           Личный кабинет
         </Button>
