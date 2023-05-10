@@ -53,29 +53,7 @@ export default function DocumentVerification() {
             </div>
           </div>
           {/* Водительское удостоверение */}
-          <h1 className=" text-white text-4xl font-bold mb-7">
-            Водительское удостоверение
-          </h1>
-          <div className="grid grid-rows-1 grid-cols-3 gap-5 w-full mb-[9%]">
-            <div className="row-start-1">
-              <span className="text-[#919191] font-medium text-[12px]">
-                Серия*
-              </span>
-              <div className="bg-white rounded-[12px] h-[52px]"></div>
-            </div>
-            <div className="row-start-1">
-              <span className="text-[#919191] font-medium text-[12px]">
-                Номер*
-              </span>
-              <div className="bg-white rounded-[12px] h-[52px]"></div>
-            </div>
-            <div className="row-start-1">
-              <span className="text-[#919191] font-medium text-[12px]">
-                Дата выдачи*
-              </span>
-              <div className="bg-white rounded-[12px] h-[52px]"></div>
-            </div>
-          </div>
+
           <button className=" w-44 h-14 bg-primary text-white rounded-[14px] font-semibold">
             Редактировать
           </button>
