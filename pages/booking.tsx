@@ -9,10 +9,16 @@ import SlideLine from "@/components/car/booking/SlideLine";
 import CarInfo from "@/components/car/booking/CarInfo";
 import Options from "@/components/car/booking/Options";
 import AccordionFAQ from "@/components/car/booking/AccordionFAQ";
+import { useRouter } from "next/router";
 
 export default function Booking() {
 	const [index, setIndex] = useState(0);
 	const [displayedSlides, setDisplayedSlides] = useState<number>(4);
+	const router = useRouter();
+
+	useEffect(() => {
+		console.log(router.query.car);
+	}, []);
 
 	function handleLeftClick() {
 		if (index > 0) {

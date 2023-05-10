@@ -10,11 +10,10 @@ import MiniCarCard from "./MiniCarCard";
 import MiniCarCardLoader from "./MiniCarCardLoader";
 
 export default function Rent() {
-	const [autos, setAutos] = useState<AutoCard[]>([]);
 	const [loaded, setLoaded] = useState(false);
 	const mobile = useMobile();
 
-	fetchAutos(setAutos, setLoaded);
+	const [autos, setAutos] = fetchAutos(setLoaded);
 
 	const header = (
 		<div className="lg:grid lg:grid-cols-11 lg:grid-rows-1 gap-5 lg:mb-12 flex flex-col">

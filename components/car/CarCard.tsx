@@ -7,7 +7,7 @@ export default function CarCard(props: AutoCard) {
 		<div className="w-[380px] h-[424px] rounded-2xl bg-white p-4 flex flex-col">
 			<div className="rounded-2xl h-[215px] relative mb-4">
 				<Image
-					src={props.Files[0].url}
+					src={props.Files[0]?.url}
 					alt="car image"
 					fill
 					style={{
@@ -23,7 +23,7 @@ export default function CarCard(props: AutoCard) {
 			<div className="flex flex-row justify-between items-center">
 				<Button primary>Арендовать</Button>
 				<div className="w-full text-center">
-					<p className="font-semibold text-background text-xl">{props.DefaultPrice} ₽/сут. </p>
+					<p className="font-semibold text-background text-xl">{props.CurrentCost} ₽/сут. </p>
 				</div>
 			</div>
 		</div>

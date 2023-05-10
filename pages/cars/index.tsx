@@ -14,16 +14,17 @@ export default function Autos() {
 	const [autos, setAutos] = useFetchAutos(setLoaded);
 
 	useEffect(() => {
-		let sorted = autos;
 		switch (sort) {
 			case "exp":
-				setAutos(sorted.sort((a, b) => b.DefaultPrice - a.DefaultPrice));
+				setAutos(autos.toSorted((a, b) => b.CurrentCost - a.CurrentCost));
 				break;
 			case "ch":
-				setAutos(sorted.sort((a, b) => a.DefaultPrice - b.DefaultPrice));
+				setAutos(autos.toSorted((a, b) => a.CurrentCost - b.CurrentCost));
 				break;
 			case "pow":
-				setAutos(sorted.sort((a, b) => b.ModInfoPowerLSValue - a.ModInfoPowerLSValue));
+				setAutos(autos.toSorted((a, b) => b.ModInfoPowerLSValue - a.ModInfoPowerLSValue));
+			case "":
+				setAutos(autos.toSorted((a, b) => a.ItemID - b.ItemID));
 		}
 	}, [sort]);
 
