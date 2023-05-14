@@ -16,8 +16,8 @@ export default function About() {
 						вмятин без покраски!
 					</p>
 				</div>
-				<div className="rounded-3xl place-self-stretch row-span-2 bg-gray aspect-auto col-start-2 row-start-1">
-					{/* {<Image src="" alt="" fill />} */}
+				<div className="rounded-3xl place-self-stretch row-span-2 aspect-auto col-start-2 row-start-1 relative">
+					<Image src="/static/index_about1.jpg" alt="" fill style={{ objectFit: "cover", borderRadius: "24px" }} />
 				</div>
 				<div className="place-self-stretch grid lg:grid-cols-3 grid-cols-2 text-white gap-5">
 					<div className="place-self-stretch rounded-3xl flex flex-col justify-between p-5 bg-darkgray">
@@ -35,8 +35,8 @@ export default function About() {
 						<p>профессионала в команде</p>
 					</div>
 				</div>
-				<div className="rounded-3xl place-self-stretch row-span-2 bg-gray aspect-auto col-start-1 row-start-2">
-					{/* <Image src="" alt="" fill /> */}
+				<div className="rounded-3xl place-self-stretch row-span-2 bg-gray aspect-auto col-start-1 row-start-2 relative">
+					<Image src="/static/index_about2.jpg" alt="" fill style={{ objectFit: "cover", borderRadius: "24px" }} />
 				</div>
 			</div>
 		</Section>

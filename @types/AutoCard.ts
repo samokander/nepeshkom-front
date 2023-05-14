@@ -16,6 +16,7 @@ export default interface AutoCard {
 	//год
 	AutoYearSt: number;
 	//базовая стоимость
+	CurrentCost: number;
 	DefaultPrice: number;
 	//депозит по умолчанию для данного авто
 	Deposit: number;

@@ -19,6 +19,7 @@ export default function useFetchAuto(
     GosNumber: "",
     MarkaModelString: "",
     AutoYearSt: 0,
+    CurrentCost: 0,
     DefaultPrice: 0,
     Deposit: 0,
     Discount: 0,

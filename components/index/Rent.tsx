@@ -1,6 +1,7 @@
 import AutoCard from "@/@types/AutoCard";
 import usefetchAutos from "@/components/hooks/useFetchAutos";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactFragment, useState } from "react";
 import Button from "../Button";
 import Calendar from "../Calendar";
@@ -30,6 +31,7 @@ export default function Rent() {
       </div>
     </div>
   );
+
   return (
     <Section header={header} slogan={""}>
       <div className="lg:w-full h-[500px] rounded-t-3xl relative overflow-hidden bg-tint flex flex-col justify-end p-4">
@@ -37,7 +39,7 @@ export default function Rent() {
           Выберите удобную для Вас дату
         </p>
         <Image
-          src="/Фото/Главная/1. Первый экран — крупный размер.jpeg"
+          src="/static/main.jpg"
           alt="3 cars"
           fill
           style={{
@@ -49,7 +51,9 @@ export default function Rent() {
       </div>
       <div className="h-[92px] lg:w-full bg-darkgray flex items-center px-5 flex-row justify-between rounded-b-3xl lg:mb-20 mb-10">
         {mobile ? <input type="date" /> : <Calendar />}
-        <Button primary>Показать</Button>
+        <Link href="/cars">
+          <Button primary>Показать</Button>
+        </Link>
       </div>
       <div className="flex flex-col lg:w-full gap-7">
         <div className="flex flex-row justify-between items-center">

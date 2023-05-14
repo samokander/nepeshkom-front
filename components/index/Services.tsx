@@ -1,9 +1,9 @@
 import InfoCard from "./InfoCard";
 import Section from "../Section";
-import RentWithDriver from "../../public/RentWithDriver.png";
-import BasicRent from "../../public/BasicRent.png";
-import Transfer from "../../public/Transfer.png";
-import PhotoshootRent from "../../public/PhotoshootRent.png";
+import RentWithDriver from "../../public/static/services1.jpg";
+import BasicRent from "../../public/static/services2.jpg";
+import Transfer from "../../public/static/services3.jpg";
+import PhotoshootRent from "../../public/static/services4.jpg";
 
 export default function Services() {
 	const header = <h2>Услуги</h2>;

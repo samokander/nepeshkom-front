@@ -13,30 +13,34 @@ export default function Autos() {
   const [sort, setSort] = useState("");
 
   const [autos, setAutos] = useFetchAutos(setLoaded);
+  console.log(autos);
 
   useEffect(() => {
-    let sorted = autos;
     switch (sort) {
       case "exp":
         setAutos(
-          sorted.sort(
-            (a, b) => b.DefaultPrice - a.DefaultPrice
+          autos.toSorted(
+            (a, b) => b.CurrentCost - a.CurrentCost
           )
         );
         break;
       case "ch":
         setAutos(
-          sorted.sort(
-            (a, b) => a.DefaultPrice - b.DefaultPrice
+          autos.toSorted(
+            (a, b) => a.CurrentCost - b.CurrentCost
           )
         );
         break;
       case "pow":
         setAutos(
-          sorted.sort(
+          autos.toSorted(
             (a, b) =>
               b.ModInfoPowerLSValue - a.ModInfoPowerLSValue
           )
+        );
+      case "":
+        setAutos(
+          autos.toSorted((a, b) => a.ItemID - b.ItemID)
         );
     }
   }, [sort]);
@@ -78,7 +82,9 @@ export default function Autos() {
               ))
             : Array(6)
                 .fill("")
-                .map(() => <CarCardLoader />)}
+                .map((el, index) => (
+                  <CarCardLoader key={index} />
+                ))}
         </div>
       </div>
     </Layout>
