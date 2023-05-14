@@ -1,7 +1,8 @@
+import XImage from "@/@types/XImage";
 import Image from "next/image";
 
 type SlideLineProps = {
-  srcs: Array<{ src: string; text: string }>;
+  urls: XImage[];
   _displayedSlides: number;
   _setDisplayedSlides: React.Dispatch<
     React.SetStateAction<number>
@@ -10,7 +11,7 @@ type SlideLineProps = {
 };
 
 export default function SlideLine({
-  srcs,
+  urls,
   _displayedSlides,
   _setDisplayedSlides,
   _index,
@@ -44,7 +45,7 @@ export default function SlideLine({
     i < _displayedSlides;
     i++
   ) {
-    displayedSrcs[i] = srcs[i];
+    displayedSrcs[i] = urls[i];
   }
 
   const slides = displayedSrcs.map((slide, id) => {
@@ -55,13 +56,13 @@ export default function SlideLine({
             ? "row-start-4 cursor-pointer"
             : "row-start-4 cursor-pointer bg-background opacity-20"
         }
-        key={`${id + slide.text}`}
+        key={`${id + slide?.url}`}
       >
         <Image
           className="rounded-[16px]"
           width={180}
           height={116}
-          src={slide.src}
+          src={slide?.url}
           alt=""
         />
       </div>

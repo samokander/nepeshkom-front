@@ -23,7 +23,7 @@ module.exports = {
       lightgray: "#F5F5F5",
       tint: "rgba(0, 0, 0, 0.2)",
       shadeofgrey: "#D6D6D6",
-      border_lightgray: "#5B5B5B",
+      b_lightgray: "#5B5B5B",
     },
     letterSpacing: {
       tightest: "-.075em",

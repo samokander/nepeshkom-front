@@ -19,10 +19,13 @@ function Accordion(
         </div>
       </div>
       {visible && (
-        <p className="block mx-8 mb-8 text-halfblack">
-          {props.faq?.map((el) => {
+        <div className="block mx-8 mb-8 text-halfblack">
+          {props.faq?.map((el, id) => {
             return (
-              <div className="flex flex-row justify-start mb-4">
+              <div
+                key={id}
+                className="flex flex-row justify-start mb-4"
+              >
                 <img src={el.title} className=" mr-3" />
                 <span className=" font-medium text-base">
                   {el.data}
@@ -30,7 +33,7 @@ function Accordion(
               </div>
             );
           })}
-        </p>
+        </div>
       )}
     </div>
   );

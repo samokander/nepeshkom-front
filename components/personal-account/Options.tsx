@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PersonalDataContext from "../Context";
+import { PersonalDataContext } from "@/components/Context";
 
 export default function Options() {
   const { selectedOption, setSelectedOption } = useContext(

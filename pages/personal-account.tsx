@@ -2,15 +2,16 @@ import Layout from "@/components/Layout";
 import PersonalData from "@/components/personal-account/PersonalData";
 import DocumentVerification from "@/components/personal-account/DocumentVerification";
 import { useState } from "react";
-import PersonalDataContext, {
+import {
+  PersonalDataContext,
   PersonalDataContextProps,
 } from "@/components/Context";
 import BookingHistory from "@/components/personal-account/BookingHistory";
 
 export enum PersonalAccountOption {
-  PERSONAL_DATA,
-  DOCUMENT_VERIFICATION,
-  BOOKING_HISTORY,
+  PERSONALDATA,
+  DOCUMENTVERIFICATION,
+  BOOKINGHISTORY,
 }
 
 export type PersonalDatatOptionProps = {
@@ -34,7 +35,7 @@ export default function PersonalAccount() {
     useState<PersonalAccountOption>(1);
 
   switch (selectedOption) {
-    case PersonalAccountOption.PERSONAL_DATA:
+    case PersonalAccountOption.PERSONALDATA:
       return (
         <Layout>
           <PersonalDataContextProvider
@@ -48,7 +49,7 @@ export default function PersonalAccount() {
         </Layout>
       );
 
-    case PersonalAccountOption.DOCUMENT_VERIFICATION:
+    case PersonalAccountOption.DOCUMENTVERIFICATION:
       return (
         <Layout>
           <PersonalDataContextProvider
@@ -61,7 +62,7 @@ export default function PersonalAccount() {
           </PersonalDataContextProvider>
         </Layout>
       );
-    case PersonalAccountOption.BOOKING_HISTORY:
+    case PersonalAccountOption.BOOKINGHISTORY:
       return (
         <Layout>
           <PersonalDataContextProvider

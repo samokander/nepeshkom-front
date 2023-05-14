@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import CarCardLoader from "@/components/car/CarCardLoader";
 import { useEffect, useState } from "react";
 import useFetchAutos from "../../components/hooks/useFetchAutos";
+import Link from "next/link";
 
 export default function Autos() {
   const [loaded, setLoaded] = useState(false);

@@ -4,6 +4,7 @@ import {
   createContext,
 } from "react";
 import { PersonalAccountOption } from "../pages/personal-account";
+import AutoCard from "@/@types/AutoCard";
 
 export interface PersonalDataContextProps {
   selectedOption: PersonalAccountOption;
@@ -12,10 +13,13 @@ export interface PersonalDataContextProps {
   >;
 }
 
-const PersonalDataContext =
+export interface CarInfoContextProps {
+  autoInfo: AutoCard;
+  setAutoInfo: Dispatch<SetStateAction<AutoCard>>;
+}
+
+export const PersonalDataContext =
   createContext<PersonalDataContextProps>({
     selectedOption: 0,
     setSelectedOption: () => undefined,
   });
-
-export default PersonalDataContext;

@@ -1,10 +1,12 @@
 import Section from "@/components/Section";
 import Options from "./Options";
 import AutoCard from "@/@types/AutoCard";
+import useFetchRequests from "../hooks/useFetchRequests";
+import { useState } from "react";
 
 function BookedCarCard() {
   return (
-    <div className=" h-full bg-[#242424] rounded-[20px] border-border_lightgray border-[1px] p-8">
+    <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
       <div className="flex flex-row gap-x-5 mb-5">
         <div className="w-[248px] h-[160px] bg-white rounded-[16px]"></div>
         <div className="w-full flex flex-col">
@@ -84,6 +86,12 @@ function BookedCarCard() {
 }
 
 export default function BookingHistory() {
+  const [loaded, setLoaded] = useState(false);
+  const [requests, setRequests] = useFetchRequests(
+    1,
+    setLoaded
+  );
+  const history = requests.map((request) => {});
   return (
     <Section header="">
       <div className="flex flex-row gap-[20px] h-full align-top w-full">
@@ -95,9 +103,9 @@ export default function BookingHistory() {
             <span className="opacity-40">(3)</span>
           </h1>
           <div className="grid auto-rows-max gap-7 ">
-            <BookedCarCard />
-            <BookedCarCard />
-            <BookedCarCard />
+            {requests.map((request, index) => {
+              return <div></div>;
+            })}
           </div>
         </div>
       </div>

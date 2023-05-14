@@ -9,7 +9,7 @@ export default function Header() {
       <div className="flex flex-row items-center w-5/6">
         <Link href="/">
           <Image
-            src="Logo SVG.svg"
+            src="/Logo SVG.svg"
             alt="Nepeshkom logo"
             height={46}
             width={115}
@@ -38,7 +38,7 @@ export default function Header() {
         </nav>
       </div>
       <Link href="/personal-account">
-        <Button icon="icons/Account.svg" primary={false}>
+        <Button icon="/icons/Account.svg" primary={false}>
           Личный кабинет
         </Button>
       </Link>

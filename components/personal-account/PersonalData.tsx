@@ -12,7 +12,7 @@ export default function PersonalData() {
         {/* options */}
         <Options />
         {/* user-info */}
-        <div className=" w-[75%] h-full bg-[#242424] rounded-[20px] border-border_lightgray border-[1px] p-8">
+        <div className=" w-[75%] h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
           <h1 className=" text-white text-4xl font-bold mb-7">
             Личная информация
           </h1>
