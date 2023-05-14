@@ -25,7 +25,7 @@ export default function Filter(props: {
 		return (
 			el.MarkaModelString.includes(brand) &&
 			el.AutoClassTitle.includes(classCode) &&
-			el.ModInfoColor.includes(color) &&
+			el.ModInfoColor.toLowerCase().includes(color.toLowerCase()) &&
 			el.ModInfoPrivod.includes(priv) &&
 			el.ModInfoTransmission.includes(transmission) &&
 			el.ModInfoBody.includes(body)

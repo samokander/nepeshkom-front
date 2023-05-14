@@ -15,10 +15,10 @@ export default function Header() {
 					<Link href="/terms" className="text-center mx-2">
 						Условия аренды
 					</Link>
-					<Link href="" className="text-center mx-2">
+					<Link href="/services" className="text-center mx-2">
 						Услуги
 					</Link>
-					<Link href="" className="text-center mx-2">
+					<Link href="/about" className="text-center mx-2">
 						О компании
 					</Link>
 					<Link href="/contacts" className="text-center mx-2">

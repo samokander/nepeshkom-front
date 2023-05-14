@@ -12,6 +12,7 @@ export default function Autos() {
 	const [sort, setSort] = useState("");
 
 	const [autos, setAutos] = useFetchAutos(setLoaded);
+	console.log(autos);
 
 	useEffect(() => {
 		switch (sort) {
@@ -52,7 +53,7 @@ export default function Autos() {
 						? autos?.map((auto, index) => <CarCard {...auto} key={index} />)
 						: Array(6)
 								.fill("")
-								.map(() => <CarCardLoader />)}
+								.map((el, index) => <CarCardLoader key={index} />)}
 				</div>
 			</div>
 		</Layout>
