@@ -66,7 +66,7 @@ export default function Booking(props: {
             _index={index}
           />
           {/* ОПЦИИ */}
-          <Options price={autoInfo.DefaultPrice} />
+          <Options price={autoInfo.DefaultPrice} autoId={autoInfo.ItemID} />
 
           {/* info */}
           <CarInfo

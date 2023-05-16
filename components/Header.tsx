@@ -33,7 +33,7 @@ export default function Header() {
         </nav>
       </div>
       <Link href="/personal-account">
-        <Button icon="icons/Account.svg" primary={false}>
+        <Button icon="/icons/Account.svg" primary={false}>
           Личный кабинет
         </Button>
       </Link>

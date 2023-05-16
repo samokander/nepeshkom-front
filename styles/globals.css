@@ -115,3 +115,10 @@ input:checked + .slider:before {
 .outer .carousel .slide {
 	background: none;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+	margin-top: 15px;
+	margin-left: 28px;
+	background: url(../public/icons/arrowDown.svg) no-repeat;
+
+}

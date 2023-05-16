@@ -1,12 +1,41 @@
 import Image from "next/image";
 import clock from "../../../public/icons/clock.svg";
 import { useState } from "react";
+import CalendarRent from "@/components/CalendarRent";
+import ModalWindow from "@/components/ModalWindow";
+import { addRentRequest } from "@/components/hooks/useFetchAddRent";
+import { format } from "date-fns";
 
-export default function Options(props: { price: number }) {
+export default function Options(props: { price: number, autoId: number }) {
   const [airportDelivery, setAirportDelivery] =
     useState(false);
   const [cityDelivery, setCityDelivery] = useState(false);
+  const [startRentHour, setStartRentHour] = useState();
+  const [endRentHour, setEndRentHour] = useState();
+  const [startRentDate, setStartRentDate] = useState<Date>();
+  const [endRentDate, setEndRentDate] = useState<Date>();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [err, setErr] = useState<boolean>(false);
+  
   //const [price, setPrice]
+
+
+
+  const handleRentAuto = async () => {
+    console.log(typeof startRentDate)
+    if (startRentDate && endRentDate) {
+      const startDate = format(startRentDate, "dd.MM.yyyy") + ' ' + (startRentHour || '00:00') + ':00'
+      const endDate = format(endRentDate, "dd.MM.yyyy")+ ' ' + (endRentHour || '00:00') + ':00'
+      const res = await addRentRequest(props.autoId, startDate, endDate)
+
+      if (typeof res?.LongParamValue === 'number') setErr(false)
+      else setErr(true)
+    } else {
+      setErr(true)
+    }
+    
+    setShowModal(true)
+  }
 
   return (
     <section
@@ -18,16 +47,21 @@ export default function Options(props: { price: number }) {
         Период аренды
       </h3>
       <span className="mb-[20px] font-semibold text-[16px] text-white opacity-50">
-        Кол-во дней: 2
+        Кол-во дней: {Math.floor((endRentDate - startRentDate) / (1000 * 60 * 60 * 24))}
       </span>
 
       {/* ВЫБОР ДАТЫ */}
 
       <div
-        className="flex flex-row items-center p-[14px] gap-[14px] isolate w-[340px] h-[52px] 
+        className="flex flex-row items-center isolate w-[340px] h-[52px] 
 								bg-white border-[1px] rounded-[12px] mb-[20px]"
       >
-        <span className="text-sblack font-medium w-[164px] h-[24px] text-[16px]">
+        <CalendarRent label="Дата начала аренды" onChange={setStartRentDate}/>
+        <div className="w-max h-12 pl-5 flex flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-tr-xl rounded-br-xl font-raleway">
+          <input type="time" id="appt" value={startRentHour} onChange={(ev) => {setStartRentHour(ev.target.value)}} />
+        </div>
+        
+        {/* <span className="text-sblack font-medium w-[164px] h-[24px] text-[16px]">
           Дата начала аренды
         </span>
         <button>
@@ -37,8 +71,8 @@ export default function Options(props: { price: number }) {
             src="/icons/Calendar.svg"
             alt=""
           />
-        </button>
-
+        </button> */}
+{/* 
         <div className="w-[1px] h-[50px] bg-superdarkgray"></div>
         <div className="">
           <button
@@ -55,14 +89,18 @@ export default function Options(props: { price: number }) {
               alt=""
             />
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div
-        className="flex flex-row items-center p-[14px] gap-[14px] isolate w-[340px] h-[52px] 
-								bg-white border-[1px] rounded-[12px] mb-[20px]"
+        className="flex flex-row items-center isolate w-[340px] h-[52px] 
+        bg-white border-[1px] rounded-[12px] mb-[20px]"
       >
-        <span className="text-sblack font-medium w-[164px] h-[24px] text-[16px]">
+        <CalendarRent label="Дата конца аренды" onChange={setEndRentDate} />
+        <div className="w-max h-12 pl-5 flex flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-tr-xl rounded-br-xl font-raleway">
+          <input type="time" id="appt" value={endRentHour} onChange={(ev) => {setEndRentHour(ev.target.value)}} />
+        </div>
+        {/* <span className="text-sblack font-medium w-[164px] h-[24px] text-[16px]">
           Дата конца аренды
         </span>
         <button>
@@ -91,7 +129,7 @@ export default function Options(props: { price: number }) {
               alt=""
             />
           </button>
-        </div>
+        </div> */}
       </div>
       {/* ПЕРЕКЛЮЧАТЕЛЬ 1 */}
       <div className="flex flex-row items-center mb-[21px]">
@@ -150,9 +188,11 @@ export default function Options(props: { price: number }) {
       <h1 className="font-bold text-[40px] tracking-[0.01em] text-white mb-[20px] p-0">
         {props.price} ₽/сут.
       </h1>
-      <button className="w-[340px] h-[52px] min-h-[52px] bg-primary rounded-[14px] font-bold text-[16px] text-white">
+      <button className="w-[340px] h-[52px] min-h-[52px] bg-primary rounded-[14px] font-bold text-[16px] text-white" onClick={handleRentAuto}>
         Забронировать
       </button>
+
+      <ModalWindow showModal={showModal} setShowModal={setShowModal} err={err}  />
     </section>
   );
 }

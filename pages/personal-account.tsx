@@ -34,6 +34,13 @@ export default function PersonalAccount() {
   const [selectedOption, setSelectedOption] =
     useState<PersonalAccountOption>(1);
 
+  // if (!localStorage.getItem('nepeshkom_cliendId') || !localStorage.getItem('nepeshkom_phoneNumber'))
+  //   return (
+  //     <Layout>
+  //         <p>asdasdasd</p>
+  //       </Layout>
+  //   )
+
   switch (selectedOption) {
     case PersonalAccountOption.PERSONALDATA:
       return (
