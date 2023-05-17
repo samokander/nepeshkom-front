@@ -42,7 +42,7 @@ import React, {
       }
     );
 
-    const handleChangeDate = (e) => {
+    const handleChangeDate = (e: Date) => {
         
         setToValue(e)
         props.onChange(e)
