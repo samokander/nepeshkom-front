@@ -20,7 +20,7 @@ import React, {
   import { usePopper } from "react-popper";
   import Image from "next/image";
   
-  export default function CalendarRent(props) {
+  export default function CalendarRent(props: { onChange: React.Dispatch<React.SetStateAction<Date>>, label: string | null, }) {
     const [selectedRange, setSelectedRange] =
       useState<DateRange>();
     const [fromValue, setFromValue] = useState<string>("");
