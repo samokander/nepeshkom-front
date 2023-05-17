@@ -37,7 +37,7 @@ export default function Car() {
       ) : (
         Array(6)
           .fill("")
-          .map(() => <CarCardLoader />)
+          .map((id) => <CarCardLoader key={id} />)
       )}
     </Layout>
   );

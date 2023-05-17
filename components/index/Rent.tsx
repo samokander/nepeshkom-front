@@ -60,12 +60,12 @@ export default function Rent() {
           <h2 className="font-bold text-3xl text-white">
             Или выберите подходящий автомобиль
           </h2>
-          <a
+          <Link
             className="text-halfblack font-semibold hover:underline"
             href="/cars"
           >
             Посмотреть все &rsaquo;
-          </a>
+          </Link>
         </div>
         <div className="lg:flex lg:flex-row lg:gap-5 outer">
           {mobile ? (
@@ -79,8 +79,8 @@ export default function Rent() {
               })}
             </div>
           ) : loaded ? (
-            autos.slice(0, 4).map((auto) => {
-              return <MiniCarCard {...auto} />;
+            autos.slice(0, 4).map((auto, index) => {
+              return <MiniCarCard {...auto} key={index}/>;
             })
           ) : (
             <>

@@ -49,13 +49,15 @@ export default function Autos() {
     <Layout>
       <Section
         header="Автомобили"
-        children={
-          <Filter
+        // children={
+          
+        // }
+      >
+        <Filter
             setAutos={setAutos}
             setLoaded={setLoaded}
           />
-        }
-      />
+      </Section>
       <div className="flex flex-col">
         <div className="flex flex-row justify-between mb-8">
           <p className="text-xl font-medium text-halfblack">

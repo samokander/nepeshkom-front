@@ -104,7 +104,7 @@ export default function BookingHistory() {
           </h1>
           <div className="grid auto-rows-max gap-7 ">
             {requests.map((request, index) => {
-              return <div></div>;
+              return <div key={index}></div>;
             })}
           </div>
         </div>
