@@ -11,7 +11,7 @@ export default function About() {
 			<Section header={header1} slogan={""}>
 				<div className="w-full h-[440px] relative bg-tint mb-16 rounded-2xl border border-halfblack">
 					<Image
-						src="/static/about1.jpg"
+						src="/static/about1.webp"
 						alt="cars"
 						fill
 						style={{
@@ -56,7 +56,7 @@ export default function About() {
 						<div className="h-[300px] w-[580px] flex flex-row gap-5">
 							<div className="w-[280px] h-[300px] relative bg-tint rounded-2xl border border-halfblack">
 								<Image
-									src="/static/about2.jpg"
+									src="/static/about2.webp"
 									alt=""
 									fill
 									style={{
@@ -75,7 +75,7 @@ export default function About() {
 						</div>
 						<div className="w-[580px] h-[480px] relative bg-tint rounded-2xl border border-halfblack">
 							<Image
-								src="/static/about3.jpg"
+								src="/static/about3.webp"
 								alt=""
 								fill
 								style={{
@@ -95,7 +95,7 @@ export default function About() {
 						<div className="flex justify-end gap-5">
 							<div className="w-[280px] h-[300px] relative bg-tint rounded-2xl border border-halfblack">
 								<Image
-									src="/static/about4.jpg"
+									src="/static/about4.webp"
 									alt=""
 									fill
 									style={{
@@ -134,7 +134,7 @@ export default function About() {
 					</p>
 					<div className="w-[550px] h-[448px] relative bg-tint rounded-2xl border border-halfblack z-10">
 						<Image
-							src="/static/about5.jpg"
+							src="/static/about5.webp"
 							alt=""
 							fill
 							style={{

@@ -1,207 +1,161 @@
-import React, {
-  ChangeEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { ru } from "date-fns/locale";
-import {
-  format,
-  isValid,
-  parse,
-  isAfter,
-  isBefore,
-} from "date-fns";
-import {
-  DayPicker,
-  DateRange,
-  SelectRangeEventHandler,
-} from "react-day-picker";
+import { format, isValid, parse, isAfter, isBefore } from "date-fns";
+import { DayPicker, DateRange, SelectRangeEventHandler } from "react-day-picker";
 import { usePopper } from "react-popper";
 import Image from "next/image";
 
-export default function Calendar() {
-  const [selectedRange, setSelectedRange] =
-    useState<DateRange>();
-  const [fromValue, setFromValue] = useState<string>("");
-  const [toValue, setToValue] = useState<string>("");
-  const [isPopperOpen, setIsPopperOpen] = useState(false);
+type CalendarProps = {
+	fromValue: string;
+	setFromValue: React.Dispatch<React.SetStateAction<string>>;
+	toValue: string;
+	setToValue: React.Dispatch<React.SetStateAction<string>>;
+};
 
-  const popperRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
-  const calendarRef = useRef<HTMLDivElement>(null);
+export default function Calendar(props: CalendarProps) {
+	const [selectedRange, setSelectedRange] = useState<DateRange>();
+	const [isPopperOpen, setIsPopperOpen] = useState(false);
 
-  const [popperElement, setPopperElement] =
-    useState<HTMLDivElement | null>(null);
+	const popperRef = useRef<HTMLDivElement>(null);
+	const buttonRef = useRef<HTMLAnchorElement>(null);
+	const calendarRef = useRef<HTMLDivElement>(null);
 
-  const popper = usePopper(
-    popperRef.current,
-    popperElement,
-    {
-      placement: "top",
-    }
-  );
+	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!isPopperOpen) return;
-    function handleClick(e: MouseEvent) {
-      if (
-        calendarRef.current &&
-        !calendarRef.current.contains(e.target as Node)
-      ) {
-        closePopper();
-      }
-    }
-    window.addEventListener("click", handleClick);
-    // clean up
-    return () =>
-      window.removeEventListener("click", handleClick);
-  }, [isPopperOpen]);
+	const popper = usePopper(popperRef.current, popperElement, {
+		placement: "top",
+	});
 
-  const closePopper = () => {
-    setIsPopperOpen(false);
-    buttonRef?.current?.focus();
-  };
+	useEffect(() => {
+		if (!isPopperOpen) return;
+		function handleClick(e: MouseEvent) {
+			if (calendarRef.current && !calendarRef.current.contains(e.target as Node)) {
+				closePopper();
+			}
+		}
+		window.addEventListener("click", handleClick);
+		// clean up
+		return () => window.removeEventListener("click", handleClick);
+	}, [isPopperOpen]);
 
-  const handleFromChange: ChangeEventHandler<
-    HTMLInputElement
-  > = (e) => {
-    setFromValue(e.target.value);
-    const date = parse(
-      e.target.value,
-      "y-MM-dd",
-      new Date()
-    );
-    if (!isValid(date)) {
-      return setSelectedRange({
-        from: undefined,
-        to: undefined,
-      });
-    }
-    if (
-      selectedRange?.to &&
-      isAfter(date, selectedRange.to)
-    ) {
-      setSelectedRange({
-        from: selectedRange.to,
-        to: date,
-      });
-    } else {
-      setSelectedRange({
-        from: date,
-        to: selectedRange?.to,
-      });
-    }
-  };
+	const closePopper = () => {
+		setIsPopperOpen(false);
+		buttonRef?.current?.focus();
+	};
 
-  const handleToChange: ChangeEventHandler<
-    HTMLInputElement
-  > = (e) => {
-    setToValue(e.target.value);
-    const date = parse(
-      e.target.value,
-      "y-MM-dd",
-      new Date()
-    );
+	const handleFromChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+		props.setFromValue(e.target.value);
+		const date = parse(e.target.value, "y-MM-dd", new Date());
+		if (!isValid(date)) {
+			return setSelectedRange({
+				from: undefined,
+				to: undefined,
+			});
+		}
+		if (selectedRange?.to && isAfter(date, selectedRange.to)) {
+			setSelectedRange({
+				from: selectedRange.to,
+				to: date,
+			});
+		} else {
+			setSelectedRange({
+				from: date,
+				to: selectedRange?.to,
+			});
+		}
+	};
 
-    if (!isValid(date)) {
-      return setSelectedRange({
-        from: selectedRange?.from,
-        to: undefined,
-      });
-    }
-    if (
-      selectedRange?.from &&
-      isBefore(date, selectedRange.from)
-    ) {
-      setSelectedRange({
-        from: date,
-        to: selectedRange.from,
-      });
-    } else {
-      setSelectedRange({
-        from: selectedRange?.from,
-        to: date,
-      });
-    }
-  };
+	const handleToChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+		props.setToValue(e.target.value);
+		const date = parse(e.target.value, "y-MM-dd", new Date());
 
-  const handleButtonClick = () => {
-    isPopperOpen ? closePopper() : setIsPopperOpen(true);
-  };
+		if (!isValid(date)) {
+			return setSelectedRange({
+				from: selectedRange?.from,
+				to: undefined,
+			});
+		}
+		if (selectedRange?.from && isBefore(date, selectedRange.from)) {
+			setSelectedRange({
+				from: date,
+				to: selectedRange.from,
+			});
+		} else {
+			setSelectedRange({
+				from: selectedRange?.from,
+				to: date,
+			});
+		}
+	};
 
-  const handleRangeSelect: SelectRangeEventHandler = (
-    range: DateRange | undefined
-  ) => {
-    setSelectedRange(range);
-    if (range?.from) {
-      setFromValue(format(range.from, "dd-MM-y"));
-    } else {
-      setFromValue("");
-    }
-    if (range?.to) {
-      setToValue(format(range.to, "dd-MM-y"));
-    } else {
-      setToValue("");
-    }
-  };
+	const handleButtonClick = () => {
+		isPopperOpen ? closePopper() : setIsPopperOpen(true);
+	};
 
-  return (
-    <div ref={calendarRef}>
-      <div
-        ref={popperRef}
-        className="w-max h-12 px-5 flex flex-row flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-xl font-raleway"
-      >
-        <input
-          type="text"
-          placeholder="Дата начала аренды"
-          value={fromValue}
-          onChange={handleFromChange}
-        />
-        <p className="mx-3"> — </p>
-        <input
-          type="text"
-          placeholder="Дата конца аренды"
-          value={toValue}
-          onChange={handleToChange}
-        />
-        <a
-          ref={buttonRef}
-          type="button"
-          className="bg-white hover:cursor-pointer"
-          aria-label="Pick a date"
-          onClick={handleButtonClick}
-        >
-          <Image
-            src="icons/Calendar.svg"
-            alt="calendar icon"
-            width={24}
-            height={24}
-          />
-        </a>
-      </div>
-      {isPopperOpen && (
-        <div>
-          <div
-            tabIndex={-1}
-            style={popper.styles.popper}
-            className="dialog-sheet z-50"
-            {...popper.attributes.popper}
-            ref={setPopperElement}
-            role="dialog"
-          >
-            <DayPicker
-              initialFocus={isPopperOpen}
-              mode="range"
-              selected={selectedRange}
-              onSelect={handleRangeSelect}
-              showOutsideDays
-              className="text-white font-raleway"
-              locale={ru}
-            />
-          </div>
-        </div>
-      )}
-    </div>
-  );
+	const handleRangeSelect: SelectRangeEventHandler = (range: DateRange | undefined) => {
+		setSelectedRange(range);
+		if (range?.from) {
+			props.setFromValue(format(range.from, "dd-MM-y"));
+		} else {
+			props.setFromValue("");
+		}
+		if (range?.to) {
+			props.setToValue(format(range.to, "dd-MM-y"));
+		} else {
+			props.setToValue("");
+		}
+	};
+
+	return (
+		<div ref={calendarRef}>
+			<div
+				ref={popperRef}
+				className="w-max h-12 px-5 flex flex-row flex-nowrap justify-around items-center bg-white border border-shadeofgrey rounded-xl font-raleway">
+				<input
+					type="text"
+					placeholder="Дата начала аренды"
+					value={props.fromValue}
+					onChange={handleFromChange}
+					onFocus={() => setIsPopperOpen(true)}
+				/>
+				<p className="mx-3"> — </p>
+				<input
+					type="text"
+					placeholder="Дата конца аренды"
+					value={props.toValue}
+					onChange={handleToChange}
+					onFocus={() => setIsPopperOpen(true)}
+				/>
+				<a
+					ref={buttonRef}
+					type="button"
+					className="bg-white hover:cursor-pointer"
+					aria-label="Pick a date"
+					onClick={handleButtonClick}>
+					<Image src="icons/Calendar.svg" alt="calendar icon" width={24} height={24} />
+				</a>
+			</div>
+			{isPopperOpen && (
+				<div>
+					<div
+						tabIndex={-1}
+						style={popper.styles.popper}
+						className="dialog-sheet z-50"
+						{...popper.attributes.popper}
+						ref={setPopperElement}
+						role="dialog">
+						<DayPicker
+							initialFocus={isPopperOpen}
+							mode="range"
+							selected={selectedRange}
+							onSelect={handleRangeSelect}
+							showOutsideDays
+							className="text-white font-raleway"
+							locale={ru}
+						/>
+					</div>
+				</div>
+			)}
+		</div>
+	);
 }
