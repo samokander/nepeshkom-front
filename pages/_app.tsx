@@ -1,6 +1,4 @@
 import "@/styles/globals.css";
-import "react-day-picker/dist/style.css";
-import "@/styles/day-picker.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";

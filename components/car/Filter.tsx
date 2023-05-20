@@ -2,16 +2,15 @@ import AutoCard from "@/@types/AutoCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "../Button";
-import Calendar from "../Calendar";
 import Select from "react-select";
 import useFetchFilters from "../hooks/useFetchFilters";
 import FilterIcon from "../icons/FilterIcon";
-import { colors } from "react-select/dist/declarations/src/theme";
+import { format } from "date-fns";
+import HTMLCalendar from "../HTMLCalendar";
+import { useDispatch } from "react-redux";
+import { setAutos, setLoading } from "@/store/store";
 
-export default function Filter(props: {
-	setAutos: React.Dispatch<React.SetStateAction<AutoCard[]>>;
-	setLoaded: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+export default function Filter() {
 	const [showFilter, setShowFilter] = useState(false);
 	const [brand, setBrand] = useState<string[]>([]);
 	const [classCode, setClasssCode] = useState<string[]>([]);
@@ -20,19 +19,21 @@ export default function Filter(props: {
 	const [transmission, setTransmission] = useState<string[]>([]);
 	const [body, setBody] = useState<string[]>([]);
 
-	const [fromValue, setFromValue] = useState<string>("");
-	const [toValue, setToValue] = useState<string>("");
+	const [fromValue, setFromValue] = useState<number>(0);
+	const [toValue, setToValue] = useState<number>(0);
+
+	const dispatch = useDispatch();
 
 	const filters = useFetchFilters();
 
 	async function handleFilterClick() {
-		props.setLoaded(false);
+		dispatch(setLoading(true));
 		try {
 			const autos = (
 				await axios.get(process.env.NEXT_PUBLIC_SEARCH_WITH_FULL_DATA as string, {
 					data: {
-						DateFrom: fromValue.replaceAll("-", ".") + " 00:00:00",
-						DateTo: toValue.replaceAll("-", ".") + " 00:00:00",
+						DateFrom: format(fromValue, "dd.MM.yyyy") + " 00:00:00",
+						DateTo: format(toValue, "dd.MM.yyyy") + " 00:00:00",
 						Brands: brand,
 						Colors: color,
 						Transmissions: transmission,
@@ -42,11 +43,9 @@ export default function Filter(props: {
 					},
 				})
 			).data as AutoCard[];
-
-			console.log(autos);
-			props.setAutos(autos);
+			dispatch(setAutos(autos));
 		} catch {}
-		props.setLoaded(true);
+		dispatch(setLoading(false));
 	}
 
 	useEffect(() => {
@@ -69,7 +68,12 @@ export default function Filter(props: {
 							: " rounded-2xl border border-halfblack")
 					}>
 					<div className="flex flex-row gap-5 items-center h-fit">
-						<Calendar fromValue={fromValue} setFromValue={setFromValue} toValue={toValue} setToValue={setToValue} />
+						<div className="flex flex-row flex-wrap gap-3 items-center">
+							<HTMLCalendar date={fromValue} setDate={setFromValue} />
+							<p className="font-bold text-white">-</p>
+							<HTMLCalendar date={toValue} setDate={setToValue} />
+						</div>
+
 						<FilterIcon showFilter={showFilter} setShowFilter={setShowFilter} />
 					</div>
 					<Button primary on_click={handleFilterClick}>
