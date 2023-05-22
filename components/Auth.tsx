@@ -7,7 +7,7 @@ export default function Auth() {
     const [phoneNumber, setPhoneNumber] = useState(getLocalStorageClientData().phoneNumber)
 
 	return (
-		<div className="w-full">
+		<div className="w-full min-h-screen">
 			{ phoneNumber ? <SmsCodeInput phone={phoneNumber} setPhone={setPhoneNumber} /> : <PhoneInput phone={phoneNumber} setPhone={setPhoneNumber} />}
 		</div>
 	);
