@@ -7,8 +7,10 @@ export default function useFetchContacts() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		(async () => {
-			const data = (await axios.get(process.env.NEXT_PUBLIC_CONTENT_CONTACTS as string)).data;
-			dispatch(setContacts(data));
+			const res = await axios.get(process.env.NEXT_PUBLIC_CONTENT_CONTACTS as string)
+			if (res?.data) {
+				dispatch(setContacts(res?.data));
+			}
 		})();
 	}, []);
 }
