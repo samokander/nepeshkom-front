@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PersonalDataContext } from "@/components/Context";
 import { useRouter } from "next/router";
+import { getLocalStorageClientData } from "../utils/getLocalStorage";
 
 export default function Options() {
   const router = useRouter();
@@ -13,6 +14,12 @@ export default function Options() {
     localStorage.removeItem('nepeshkom_cliendId')
     router.push('/auth')
   }
+
+  useEffect(() => {
+    if(!getLocalStorageClientData().phoneNumber) logout()
+  }, []);
+
+  
 
   return (
     <div

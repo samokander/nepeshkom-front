@@ -5,9 +5,12 @@ import ModalWindow from "@/components/ModalWindow";
 import { addRentRequest } from "@/components/hooks/useFetchAddRent";
 import { format } from "date-fns";
 import HTMLCalendar from "@/components/HTMLCalendar";
+import { getLocalStorageClientData } from "@/components/utils/getLocalStorage";
+import { useRouter } from "next/router";
 import convertDateFormat from "@/components/utils/convertDateFormat";
 
 export default function Options(props: { price: number; autoId: number }) {
+	const router = useRouter();
 	const [airportDelivery, setAirportDelivery] = useState(false);
 	const [cityDelivery, setCityDelivery] = useState(false);
 	const [startRentHour, setStartRentHour] = useState();
@@ -19,6 +22,7 @@ export default function Options(props: { price: number; autoId: number }) {
 	const [toValue, setToValue] = useState<string>("");
 
 	const handleRentAuto = async () => {
+		if (!getLocalStorageClientData().phoneNumber) router.push("/auth");
 		if (fromValue && toValue) {
 			const startDate = convertDateFormat(fromValue) + " " + (startRentHour || "00:00") + ":00";
 			const endDate = convertDateFormat(toValue) + " " + (endRentHour || "00:00") + ":00";
