@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 type CalendarProps = {
-	date: number;
-	setDate: React.Dispatch<React.SetStateAction<number>>;
+	date: string;
+	setDate: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function HTMLCalendar(props: CalendarProps) {
@@ -10,7 +10,7 @@ export default function HTMLCalendar(props: CalendarProps) {
 		<input
 			type="date"
 			value={props.date}
-			onChange={(e) => props.setDate(e.target.valueAsNumber)}
+			onChange={(e) => props.setDate(e.target.value)}
 			className="rounded-xl px-5 h-12 w-[250px]"
 		/>
 	);

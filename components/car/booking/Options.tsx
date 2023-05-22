@@ -5,6 +5,7 @@ import ModalWindow from "@/components/ModalWindow";
 import { addRentRequest } from "@/components/hooks/useFetchAddRent";
 import { format } from "date-fns";
 import HTMLCalendar from "@/components/HTMLCalendar";
+import convertDateFormat from "@/components/utils/convertDateFormat";
 
 export default function Options(props: { price: number; autoId: number }) {
 	const [airportDelivery, setAirportDelivery] = useState(false);
@@ -14,13 +15,13 @@ export default function Options(props: { price: number; autoId: number }) {
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [err, setErr] = useState<boolean>(false);
 
-	const [fromValue, setFromValue] = useState<number>(0);
-	const [toValue, setToValue] = useState<number>(0);
+	const [fromValue, setFromValue] = useState<string>("");
+	const [toValue, setToValue] = useState<string>("");
 
 	const handleRentAuto = async () => {
 		if (fromValue && toValue) {
-			const startDate = format(fromValue, "dd.MM.yyyy") + " " + (startRentHour || "00:00") + ":00";
-			const endDate = format(toValue, "dd.MM.yyyy") + " " + (endRentHour || "00:00") + ":00";
+			const startDate = convertDateFormat(fromValue) + " " + (startRentHour || "00:00") + ":00";
+			const endDate = convertDateFormat(toValue) + " " + (endRentHour || "00:00") + ":00";
 			const res = await addRentRequest(props.autoId, startDate, endDate);
 
 			if (typeof res?.LongParamValue === "number") setErr(false);
@@ -39,7 +40,7 @@ export default function Options(props: { price: number; autoId: number }) {
 							border-[1px] border-[#5B5B5B] h-auto">
 			<h3 className="mb-[10px] font-bold text-[30px] text-white">Период аренды</h3>
 			<span className="mb-[20px] font-semibold text-[16px] text-white opacity-50">
-				Кол-во дней: {Math.floor((toValue - fromValue) / (1000 * 60 * 60 * 24))}
+				Кол-во дней: {Math.floor((new Date(toValue).valueOf() - new Date(fromValue).valueOf()) / (1000 * 60 * 60 * 24))}
 			</span>
 
 			{/* ВЫБОР ДАТЫ */}

@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import HTMLCalendar from "../HTMLCalendar";
 import { useDispatch } from "react-redux";
 import { setAutos, setLoading } from "@/store/store";
+import convertDateFormat from "../utils/convertDateFormat";
 
 export default function Filter() {
 	const [showFilter, setShowFilter] = useState(false);
@@ -19,8 +20,8 @@ export default function Filter() {
 	const [transmission, setTransmission] = useState<string[]>([]);
 	const [body, setBody] = useState<string[]>([]);
 
-	const [fromValue, setFromValue] = useState<number>(0);
-	const [toValue, setToValue] = useState<number>(0);
+	const [fromValue, setFromValue] = useState<string>("");
+	const [toValue, setToValue] = useState<string>("");
 
 	const dispatch = useDispatch();
 
@@ -29,11 +30,12 @@ export default function Filter() {
 	async function handleFilterClick() {
 		dispatch(setLoading(true));
 		try {
+			console.log(fromValue);
 			const autos = (
 				await axios.get(process.env.NEXT_PUBLIC_SEARCH_WITH_FULL_DATA as string, {
 					data: {
-						DateFrom: format(fromValue, "dd.MM.yyyy") + " 00:00:00",
-						DateTo: format(toValue, "dd.MM.yyyy") + " 00:00:00",
+						DateFrom: convertDateFormat(fromValue) + " 00:00:00",
+						DateTo: convertDateFormat(toValue) + " 00:00:00",
 						Brands: brand,
 						Colors: color,
 						Transmissions: transmission,
