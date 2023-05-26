@@ -34,12 +34,18 @@ export default function PersonalAccount() {
   const [selectedOption, setSelectedOption] =
     useState<PersonalAccountOption>(1);
 
-  // if (!localStorage.getItem('nepeshkom_cliendId') || !localStorage.getItem('nepeshkom_phoneNumber'))
+  const [isDocumentsModalOpen, setIsDocumentsModalOpen] =
+    useState(false);
+
+  // if (
+  //   !localStorage.getItem("nepeshkom_cliendId") ||
+  //   !localStorage.getItem("nepeshkom_phoneNumber")
+  // )
   //   return (
   //     <Layout>
-  //         <p>asdasdasd</p>
-  //       </Layout>
-  //   )
+  //       <p>asdasdasd</p>
+  //     </Layout>
+  //   );
 
   switch (selectedOption) {
     case PersonalAccountOption.PERSONALDATA:
@@ -65,7 +71,10 @@ export default function PersonalAccount() {
               setSelectedOption,
             }}
           >
-            <DocumentVerification />
+            <DocumentVerification
+              isOpen={isDocumentsModalOpen}
+              setIsOpen={setIsDocumentsModalOpen}
+            />
           </PersonalDataContextProvider>
         </Layout>
       );

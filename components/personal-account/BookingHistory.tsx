@@ -3,7 +3,6 @@ import Options from "./Options";
 import AutoCard from "@/@types/AutoCard";
 import useFetchRequests from "../hooks/useFetchRequests";
 import { useState } from "react";
-
 function BookedCarCard() {
   return (
     <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
@@ -96,6 +95,7 @@ export default function BookingHistory() {
     <Section header="">
       <div className="flex flex-row gap-[20px] h-full align-top w-full">
         {/* options */}
+
         <Options />
         <div className="w-[75%]">
           <h1 className=" text-white text-4xl font-bold mb-7 w-full">
