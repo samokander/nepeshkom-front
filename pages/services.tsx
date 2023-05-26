@@ -22,7 +22,7 @@ export default function Services() {
 			<Layout>
 				<Path pageName="Услуги" pathTo="/services" />
 				<Section header={header} slogan="Максимально прозрачны для арендатора – никаких сюрпризов в договоре">
-					<div className="flex flex-col w-full gap-16">
+					<div className="flex flex-col w-full md:gap-16 gap-8">
 						<ServiceSection
 							header="Аренда с водителем"
 							dst="/cars"

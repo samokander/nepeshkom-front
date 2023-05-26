@@ -13,11 +13,16 @@ export default function HeaderM() {
 				<OptionsIcon setShowOptions={setShowOptions} />
 			</div>
 			{showOptions && (
-				<div className="rounded-2xl bg-darkgray border border-slightblack p-5">
+				<div className="rounded-2xl bg-darkgray border border-slightblack p-5 mb-3">
 					<ul className="flex flex-col gap-5 text-white font-semibold text-base">
 						<li>
 							<Link href="/" className="mb-">
 								Главная
+							</Link>
+						</li>
+						<li>
+							<Link href="/cars" className="mb-">
+								Автопарк
 							</Link>
 						</li>
 						<li>
@@ -38,6 +43,11 @@ export default function HeaderM() {
 						<li>
 							<Link href="/contacts" className="mb-">
 								Контакты
+							</Link>
+						</li>
+						<li>
+							<Link href="/personal-account" className="text-primary">
+								Личный кабинет
 							</Link>
 						</li>
 					</ul>

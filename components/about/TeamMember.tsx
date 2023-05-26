@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TeamMember(props: { name: string; role: string; img: string }) {
 	return (
-		<div className="w-[280px] h-[374px] flex flex-col p-4 gap-4 bg-darkgray rounded-2xl border border-halfblack">
+		<div className="max-w-[280px] h-[374px] flex flex-col p-4 gap-4 bg-darkgray rounded-2xl border border-halfblack ">
 			<Image
 				src={props.img}
 				alt=""

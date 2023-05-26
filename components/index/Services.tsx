@@ -10,7 +10,7 @@ export default function Services() {
 	const slogan = "Сотрудничая с нами, Вы повышаете качество и ценность своей собственности";
 	return (
 		<Section header={header} slogan={slogan}>
-			<div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 flex flex-col gap-5 lg:w-full">
+			<div className="md:grid md:grid-cols-2 md:grid-rows-2 flex flex-col gap-5 md:w-full">
 				<InfoCard header="Аренда с водителем" desc={slogan} imgSrc={RentWithDriver} dst="/" />
 				<InfoCard header="Аренда без водителя" desc={slogan} imgSrc={BasicRent} dst="/" />
 				<InfoCard header="Трансфер" desc={slogan} imgSrc={Transfer} dst="/" />

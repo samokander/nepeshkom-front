@@ -35,15 +35,15 @@ export default function Minimal() {
 				</div>
 			</div>
 			<div className="mt-20 grid grid-cols-2 grid-rows-2 gap-5">
-				<div className="bg-darkgray border-solid border border-halfblack p-7 col-span-2 h-[142px] rounded-3xl">
+				<div className="bg-darkgray border-solid border border-halfblack p-7 col-span-2 min-h-[142px] rounded-3xl">
 					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardFirstTitle}</h3>
 					<p className="font-medium text-halfblack text-base">{terms?.cardFirstText}</p>
 				</div>
-				<div className="bg-darkgray border-solid border border-halfblack p-7 h-[142px] rounded-3xl">
+				<div className="bg-darkgray border-solid border border-halfblack p-7 min-h-[142px] rounded-3xl">
 					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardSecondTitle}</h3>
 					<p className="font-medium text-halfblack text-base">{terms?.cardSecondText}</p>
 				</div>
-				<div className="bg-darkgray border-solid border border-halfblack p-7 h-[142px] rounded-3xl">
+				<div className="bg-darkgray border-solid border border-halfblack p-7 min-h-[142px] rounded-3xl">
 					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardThirdTitle}</h3>
 					<p className="font-medium text-halfblack text-base">{terms?.cardThirdText}</p>
 				</div>

@@ -13,6 +13,7 @@ export default function useFetchAutos() {
 				const resp = (await axios.get(process.env.NEXT_PUBLIC_ALL_AUTOS_ROUTE as string)).data as AutoCard[];
 				dispatch(setAutos(resp));
 				dispatch(setLoading(false));
+				console.log(resp);
 			} catch (err) {
 				console.error(err);
 			}

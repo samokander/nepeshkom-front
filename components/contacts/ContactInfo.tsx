@@ -47,7 +47,7 @@ export default function ContactInfo() {
 				<div className="rounded-2xl w-full">
 					<Map
 						defaultState={{ center: [56.503693309819965, 84.95313794838682], zoom: 17 }}
-						className="w-[1180px] h-[600px] rounded-3xl">
+						className="w-full h-[600px] rounded-3xl">
 						<Placemark defaultGeometry={[56.50353749103979, 84.95458143982566]} />
 						<FullscreenControl />
 					</Map>

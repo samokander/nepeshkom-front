@@ -11,7 +11,7 @@ export default function HTMLCalendar(props: CalendarProps) {
 			type="date"
 			value={props.date}
 			onChange={(e) => props.setDate(e.target.value)}
-			className="rounded-xl px-5 h-12 w-[250px]"
+			className="rounded-xl px-5 h-12 w-max flex flex-grow"
 		/>
 	);
 }

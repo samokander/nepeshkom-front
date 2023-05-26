@@ -47,12 +47,7 @@ export default function Autos() {
 
 	return (
 		<Layout>
-			<Section
-				header="Автомобили"
-				// children={
-
-				// }
-			>
+			<Section header="Автомобили">
 				<Filter />
 			</Section>
 			<div className="flex flex-col">
