@@ -5,40 +5,26 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import AutoCard from "@/@types/AutoCard";
 import { useEffect, useState } from "react";
-import useFetchAuto from "@/components/hooks/useFetchAuto";
 import CarCardLoader from "@/components/car/CarCardLoader";
-import { getAutoById } from "@/components/hooks/getFerchAuto";
+import { getAutoById } from "@/components/hooks/helpers/getAutoById";
 
 export default function Car() {
-  const [loaded, setLoaded] = useState(false);
-  const [auto, setAuto] = useState()
-  const router = useRouter()
-  const { car } = router.query
+	const [loaded, setLoaded] = useState(false);
+	const [auto, setAuto] = useState<AutoCard>();
+	const router = useRouter();
+	const { car } = router.query;
 
-  useEffect(() => {
-    if (!car) return
+	useEffect(() => {
+		if (!car) return;
 
-    const awaitGetAuto = async () => {
-      const res = await getAutoById(car)
-      setAuto(res)
-      console.log(res)
-    }
+		const awaitGetAuto = async () => {
+			const res = await getAutoById(car);
+			setAuto(res);
+			console.log(res);
+		};
 
-    awaitGetAuto()
+		awaitGetAuto();
+	}, [car]);
 
-    
-  }, [car])
-
-
-  return (
-    <Layout>
-      {auto ? (
-        <Booking autoInfo={auto} />
-      ) : (
-        Array(6)
-          .fill("")
-          .map((id) => <CarCardLoader key={id} />)
-      )}
-    </Layout>
-  );
+	return <Layout>{auto && <Booking autoInfo={auto} />}</Layout>;
 }

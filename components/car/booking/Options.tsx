@@ -3,7 +3,6 @@ import clock from "../../../public/icons/clock.svg";
 import { useState } from "react";
 import ModalWindow from "@/components/ModalWindow";
 import { addRentRequest } from "@/components/hooks/useFetchAddRent";
-import { format } from "date-fns";
 import HTMLCalendar from "@/components/HTMLCalendar";
 import { getLocalStorageClientData } from "@/components/utils/getLocalStorage";
 import { useRouter } from "next/router";
@@ -38,16 +37,11 @@ export default function Options(props: { price: number; autoId: number }) {
 	};
 
 	return (
-		<section
-			className="flex flex-col col-start-5 row-span-4 col-span-2 
-							rounded-[16px] p-[20px] bg-darkgray w-[380px] 
-							border-[1px] border-[#5B5B5B] h-auto">
+		<section className="flex flex-col rounded-[16px] p-[20px] bg-darkgray w-[380px] border border-[#5B5B5B] h-auto">
 			<h3 className="mb-[10px] font-bold text-[30px] text-white">Период аренды</h3>
 			<span className="mb-[20px] font-semibold text-[16px] text-white opacity-50">
 				Кол-во дней: {Math.floor((new Date(toValue).valueOf() - new Date(fromValue).valueOf()) / (1000 * 60 * 60 * 24))}
 			</span>
-
-			{/* ВЫБОР ДАТЫ */}
 
 			<div
 				className="flex flex-row items-center isolate w-[340px] h-[52px] 
@@ -94,7 +88,7 @@ export default function Options(props: { price: number; autoId: number }) {
 				<p className="ml-[22px] font-semibold text-[16px] text-white opacity-50">Доставка до аэропорта - 1500 ₽</p>
 			</div>
 			{/* ПЕРЕКЛЮЧАТЕЛЬ 2 */}
-			<div className="flex flex-row items-center mb-[16%]">
+			<div className="flex flex-row items-center mb-20">
 				<label className="switch">
 					<input type="checkbox" value={cityDelivery} onChange={() => setCityDelivery((prev) => !prev)}></input>
 					<span className="slider"></span>

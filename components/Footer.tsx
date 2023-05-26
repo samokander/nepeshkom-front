@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import useFetchContacts from "./hooks/useFetchContacts";
 import useMobile from "./hooks/useMobile";
+import Logo from "./icons/Logo";
 import TelegramIcon from "./icons/TelegramIcon";
 import WhatsappIcon from "./icons/WhatsappIcon";
 
@@ -16,7 +17,7 @@ export default function Footer() {
 	return (
 		<footer className="bg-darkgray border border-slightblack border-b-transparent rounded-t-3xl px-8 py-6 text-white">
 			<div className="flex flex-row items-center justify-between mb-7">
-				<Image src="Logo SVG.svg" alt="Nepeshkom logo" height={46} width={115} className="mr-8" />
+				<Logo w={115} h={45} />
 				<nav className="flex justify-between flex-row w-8/12 max-[840px]:justify-end gap-5">
 					{isMobile ? (
 						<>

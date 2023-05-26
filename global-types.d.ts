@@ -1,6 +1,5 @@
 type carInfoProps = {
 	features: featuresType;
-	equipment: equipmentType;
 };
 
 type featuresType = {

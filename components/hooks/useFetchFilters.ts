@@ -15,16 +15,12 @@ type Filters = {
 };
 
 export default function useFetchFilters() {
-	const [brand, setBrand] = useState<{ value: string; label: string }[]>([{ value: "string", label: "string" }]);
-	const [classCode, setClassCode] = useState<{ value: string; label: string }[]>([
-		{ value: "string", label: "string" },
-	]);
-	const [color, setColor] = useState<{ value: string; label: string }[]>([{ value: "string", label: "string" }]);
-	const [priv, setPriv] = useState<{ value: string; label: string }[]>([{ value: "string", label: "string" }]);
-	const [transmission, setTransmission] = useState<{ value: string; label: string }[]>([
-		{ value: "string", label: "string" },
-	]);
-	const [body, setBody] = useState<{ value: string; label: string }[]>([{ value: "string", label: "string" }]);
+	const [brand, setBrand] = useState<{ value: string; label: string }[]>([]);
+	const [classCode, setClassCode] = useState<{ value: string; label: string }[]>([]);
+	const [color, setColor] = useState<{ value: string; label: string }[]>([]);
+	const [priv, setPriv] = useState<{ value: string; label: string }[]>([]);
+	const [transmission, setTransmission] = useState<{ value: string; label: string }[]>([]);
+	const [body, setBody] = useState<{ value: string; label: string }[]>([]);
 
 	useEffect(() => {
 		const brandsOptions: { value: string; label: string }[] = [];

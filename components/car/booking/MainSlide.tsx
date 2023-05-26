@@ -2,62 +2,44 @@ import XImage from "@/@types/XImage";
 import Image from "next/image";
 
 type MainSlideProps = {
-  leftClick: React.MouseEventHandler<HTMLDivElement>;
-  rightClick: React.MouseEventHandler<HTMLDivElement>;
-  _index: number;
-  //_setIndex: React.Dispatch<React.SetStateAction<number>>;
-  urls: XImage[];
+	leftClick: React.MouseEventHandler<HTMLDivElement>;
+	rightClick: React.MouseEventHandler<HTMLDivElement>;
+	_index: number;
+	urls: XImage[];
 };
 
 export default function MainSlide({
-  leftClick,
-  rightClick,
-  _index,
-  //_setIndex,
-  urls,
+	leftClick,
+	rightClick,
+	_index,
+	//_setIndex,
+	urls,
 }: MainSlideProps) {
-  return (
-    <div className="relative row-span-3 col-span-4 row-start-1 col-start-1 max-w-[780px] inline-block w-auto">
-      <div>
-        <Image
-          id="selected_image"
-          className="selected_image select-none"
-          width={780}
-          height={440}
-          src={urls[_index]?.url}
-          alt=""
-        />
-        <div
-          className="cursor-pointer absolute flex rounded-full bg-white w-[32px] h-[32px] transform -translate-y-1/2 top-[50%] right-[95%]"
-          onClick={leftClick}
-        >
-          <Image
-            className="ml-[10px] my-auto select-none"
-            src="/icons/arrowLeft.svg"
-            alt=""
-            width={10}
-            height={10}
-          />
-        </div>
-
-        <div
-          className="cursor-pointer absolute flex rounded-full bg-white w-[32px] h-[32px] transform -translate-y-1/2 top-[50%] right-[1%]"
-          onClick={rightClick}
-        >
-          <Image
-            className="ml-[10px] my-auto select-none"
-            src="/icons/arrowRight.svg"
-            alt=""
-            width={10}
-            height={10}
-          />
-        </div>
-        <div className="absolute w-[48px] h-[23px] px-[10px] py-[2px] transform left-[46%] -translate-y-[-375px] top-[5%] rounded-[30px] bg-white">
-          <span className=" text-center text-primary text-[16px] font-semibold static select-none">
-            {`${_index + 1}/${urls?.length}`}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="aspect-[3/2] border relative">
+			<Image
+				id="selected_image"
+				className="selected_image select-none"
+				fill
+				src={urls[_index]?.url}
+				alt=""
+				style={{ objectFit: "cover", borderRadius: "24px", zIndex: "-1" }}
+			/>
+			<div
+				className="cursor-pointer absolute flex rounded-full justify-center items-center bg-white w-8 h-8 top-1/2 left-2"
+				onClick={leftClick}>
+				<Image src="/icons/arrowLeft.svg" alt="" width={10} height={10} />
+			</div>
+			<div
+				className="cursor-pointer absolute flex rounded-full justify-center items-center bg-white w-8 h-8 top-[50%] right-2"
+				onClick={rightClick}>
+				<Image src="/icons/arrowRight.svg" alt="" width={10} height={10} />
+			</div>
+			<div className="absolute w-12 h-6 px-[10px] left-[46%] bottom-4 rounded-[30px] bg-white">
+				<span className=" text-center text-primary text-[16px] font-semibold select-none">
+					{`${_index + 1}/${urls?.length}`}
+				</span>
+			</div>
+		</div>
+	);
 }
