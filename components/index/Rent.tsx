@@ -71,13 +71,9 @@ export default function Rent() {
 					</Link>
 				</div>
 				<div className="flex flex-row gap-5 flex-nowrap overflow-x-auto max-w-[99vw]">
-					{mobile
-						? autos?.slice(0, 4).map((auto) => {
-								return !loading ? <MiniCarCard {...auto} /> : <MiniCarCardLoader />;
-						  })
-						: autos?.slice(0, 4).map((auto, index) => {
-								return !loading ? <MiniCarCard {...auto} key={index} /> : <MiniCarCardLoader />;
-						  })}
+					{autos?.slice(0, 4).map((auto, index) => {
+						return !loading ? <MiniCarCard {...auto} key={index} /> : <MiniCarCardLoader />;
+					})}
 				</div>
 			</div>
 		</Section>
