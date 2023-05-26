@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useMobile() {
+export default function useMobile(width = 765) {
 	// Initialize state with undefined width/height so server and client renders match
 	// Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
 	const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined);
@@ -22,5 +22,6 @@ export default function useMobile() {
 		// Remove event listener on cleanup
 		return () => window.removeEventListener("resize", handleResize);
 	}, []); // Empty array ensures that effect is only run on mount
-	return windowWidth! > 950 ? false : true;
+
+	return windowWidth! > width ? false : true;
 }

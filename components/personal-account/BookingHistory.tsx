@@ -4,6 +4,12 @@ import AutoCard from "@/@types/AutoCard";
 import useFetchRequests from "../hooks/useFetchRequests";
 import { useState } from "react";
 function BookedCarCard() {
+  const [loaded, setLoaded] = useState(false);
+  const [requests, setRequests] = useFetchRequests(
+    "",
+    setLoaded
+  );
+
   return (
     <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
       <div className="flex flex-row gap-x-5 mb-5">

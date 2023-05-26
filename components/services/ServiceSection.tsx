@@ -21,14 +21,14 @@ export default function ServiceSection(props: InfoCardProps) {
 					style={{ objectFit: "cover", borderRadius: "24px", zIndex: -1 }}
 				/>
 				<div className="z-10 w-full flex justify-between">
-					<h1 className="font-bold lg:text-4xl mb-2 text-xl text-white z-10">{props.header}</h1>
+					<h1 className="font-bold md:text-4xl mb-2 text-xl text-white z-10">{props.header}</h1>
 					<Button primary on_click={handleRedirect}>
 						Заказать услугу
 					</Button>
 				</div>
 			</div>
-			<div className="lg:p-8 p-5">
-				<h2 className="font-medium lg:text-xl text-sm text-halfblack">{props.desc}</h2>
+			<div className="md:p-8 p-5">
+				<h2 className="font-medium md:text-xl text-sm text-halfblack">{props.desc}</h2>
 			</div>
 		</section>
 	);

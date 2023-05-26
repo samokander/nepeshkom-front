@@ -3,10 +3,10 @@ import Path from "@/components/Path";
 import Section from "@/components/Section";
 import ServiceSection from "@/components/services/ServiceSection";
 import { useEffect, useState } from "react";
-import RentWithDriver from "../public/static/services1.jpg";
-import BasicRent from "../public/static/services2.jpg";
-import Transfer from "../public/static/services3.jpg";
-import PhotoshootRent from "../public/static/services4.jpg";
+import RentWithDriver from "../public/static/services1.webp";
+import BasicRent from "../public/static/services2.webp";
+import Transfer from "../public/static/services3.webp";
+import PhotoshootRent from "../public/static/services4.webp";
 
 export default function Services() {
 	const header = <h1>Услуги</h1>;
@@ -22,7 +22,7 @@ export default function Services() {
 			<Layout>
 				<Path pageName="Услуги" pathTo="/services" />
 				<Section header={header} slogan="Максимально прозрачны для арендатора – никаких сюрпризов в договоре">
-					<div className="flex flex-col w-full gap-16">
+					<div className="flex flex-col w-full md:gap-16 gap-8">
 						<ServiceSection
 							header="Аренда с водителем"
 							dst="/cars"
@@ -47,7 +47,10 @@ export default function Services() {
 							header="Авто для фотосессии"
 							dst="/cars"
 							imgSrc={PhotoshootRent}
-							desc="Всё большую популярность приобретает аренда автомобилей для фотосессий:- Вы можете провести стильную съёмку на парковке с авто, как личного характера, так и коммерческого;- Вы можете не только выехать на природу, но и сделать романтичную съёмку Love Story в снежном лесу; Хотите сделать крутые фото и видео и поделиться ими в своих социальных сетях? Арендуйте автомобиль в «#НЕПЕШКОМ»! "
+							desc="Всё большую популярность приобретает аренда автомобилей для фотосессий:
+							- Вы можете провести стильную съёмку на парковке с авто, как личного характера, так и коммерческого;
+							- Вы можете не только выехать на природу, но и сделать романтичную съёмку Love Story в снежном лесу; 
+							Хотите сделать крутые фото и видео и поделиться ими в своих социальных сетях? Арендуйте автомобиль в «#НЕПЕШКОМ»! "
 						/>
 					</div>
 				</Section>

@@ -9,11 +9,12 @@ export default function About() {
 	return (
 		<Layout>
 			<Section header={header1} slogan={""}>
-				<div className="w-full h-[440px] relative bg-tint mb-16 rounded-2xl border border-halfblack">
+				<div className="w-full h-[440px] relative bg-tint mb-16 rounded-2xl border border-halfblack flex">
 					<Image
-						src="/static/about1.jpg"
+						src="/static/about1.webp"
 						alt="cars"
 						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 						style={{
 							borderRadius: "16px",
 							objectFit: "cover",
@@ -22,43 +23,41 @@ export default function About() {
 						}}
 					/>
 				</div>
-
-				<div className="mb-16">
+				<div className="mb-16 flex flex-col">
 					<h2 className="text-5xl mb-10 font-bold text-white">
 						NEPESHKOM — компания по аренде автомобилей с самыми лучшими условиями
 					</h2>
-					<div className="flex flex-row h-[176px] gap-5">
-						<div className="aspect-square h-full rounded-3xl flex flex-col justify-between p-5 bg-darkgray text-white">
+					<div className="flex flex-row min-h-[176px] gap-5 flex-wrap">
+						<div className="aspect-square max-h-[165px] rounded-3xl flex flex-col justify-between p-5 bg-darkgray text-white flex-grow">
 							<h1 className="font-bold text-5xl mb-11">10</h1>
-							<p>
-								лет опыта <br /> работы
-							</p>
+							<p>лет опыта</p>
 						</div>
-						<div className="aspect-square h-full rounded-3xl flex flex-col justify-between p-5 bg-primary text-white">
+						<div className="aspect-square max-h-[165px] rounded-3xl flex flex-col justify-between p-5 bg-primary text-white flex-grow">
 							<h1 className="font-bold text-5xl mb-11">24</h1>
-							<p>профессионала в команде</p>
+							<p>профессионала</p>
 						</div>
-						<div className="aspect-square h-full rounded-3xl flex flex-col justify-between p-5 bg-white">
+						<div className="md:aspect-square max-h-[165px] rounded-3xl flex flex-col justify-between p-5 bg-white flex-grow">
 							<h1 className="font-bold text-5xl mb-11">400+</h1>
-							<p>довольных клиентов</p>
+							<p>клиентов</p>
 						</div>
-						<p className="text-halfblack font-medium">
+						<p className="text-halfblack font-medium min-[1110px]:max-w-xl">
 							Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей. По многочисленным запросам наших
 							постоянных клиентов о комплексном уходе за интерьером и экстерьером их автомобилей, мы открыли свою
-							собственную детейлинг-студиюА еще наша детейлинг студия предоставляет услуги МАЛЯРНОГО-КУЗОВНОГО ЦЕХА!
+							собственную детейлинг-студию. А еще наша детейлинг студия предоставляет услуги МАЛЯРНОГО-КУЗОВНОГО ЦЕХА!
 							Локальная покраска за короткие сроки, покраска элементов в камере и выправления вмятин без покраски!
 						</p>
 					</div>
 				</div>
 				<h2 className="text-5xl mb-10 font-bold text-white">Мы больше чем просто прокат</h2>
 				<div className="flex flex-col mb-16">
-					<div className="flex flex-row gap-5 mb-16">
-						<div className="h-[300px] w-[580px] flex flex-row gap-5">
-							<div className="w-[280px] h-[300px] relative bg-tint rounded-2xl border border-halfblack">
+					<div className="flex md:flex-row gap-5 mb-16 flex-col flex-wrap">
+						<div className="h-[300px] flex flex-row gap-5 flex-grow">
+							<div className="aspect-[280/300] w-1/3 relative bg-tint rounded-2xl border border-halfblack">
 								<Image
-									src="/static/about2.jpg"
+									src="/static/about2.webp"
 									alt=""
 									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									style={{
 										borderRadius: "16px",
 										objectFit: "cover",
@@ -67,17 +66,17 @@ export default function About() {
 									}}
 								/>
 							</div>
-
 							<p className="text-halfblack w-[280px] font-medium text-xl">
 								Компания #НЕПЕШКОМ предоставляет аренду авто с профессиональным водителем. Это очень удобно для людей,не
 								имеющих водительского удостоверения.
 							</p>
 						</div>
-						<div className="w-[580px] h-[480px] relative bg-tint rounded-2xl border border-halfblack">
+						<div className="aspect-[580/480] relative bg-tint rounded-2xl border border-halfblack flex-grow min-h-[286px] max-h-[480px]">
 							<Image
-								src="/static/about3.jpg"
+								src="/static/about3.webp"
 								alt=""
 								fill
+								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 								style={{
 									borderRadius: "16px",
 									objectFit: "cover",
@@ -87,15 +86,15 @@ export default function About() {
 							/>
 						</div>
 					</div>
-					<div className="w-[980px]">
-						<h2 className="text-3xl font-bold text-white ml-[300px]">Прокат автомобиля с водителем</h2>
+					<div className="min-[980px]:w-[980px]">
+						<h2 className="text-3xl font-bold text-white ml-[33%]">Прокат автомобиля с водителем</h2>
 						<h2 className="text-3xl mb-10 font-bold text-white">
 							позволяет расслабиться после тяжелого трудового <br /> дня и насладиться дорогой домой.
 						</h2>
 						<div className="flex justify-end gap-5">
 							<div className="w-[280px] h-[300px] relative bg-tint rounded-2xl border border-halfblack">
 								<Image
-									src="/static/about4.jpg"
+									src="/static/about4.webp"
 									alt=""
 									fill
 									style={{
@@ -106,23 +105,25 @@ export default function About() {
 									}}
 								/>
 							</div>
-
 							<p className="text-halfblack w-[370px] font-medium text-xl">
 								Прокат автомобиля с водителем – это очень удобно и безопасно. Вы всегда будете знать, что сможете уехать
-								домой в каком бы состояниини были. Ведь таксисты не всегда соглашаются брать захмелевшего клиента.
+								домой в каком бы состоянии ни были. Ведь таксисты не всегда соглашаются брать захмелевшего клиента.
 							</p>
 						</div>
 					</div>
 				</div>
 				<h2 className="text-5xl mb-10 font-bold text-white">Наша команда</h2>
-				<div className="gap-5 flex-row flex mb-16">
-					<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
-					<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
-					<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
-					<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
+				<div className="max-w-[96.5vw] mb-10">
+					<div className="overflow-x-auto flex-row flex flex-nowrap gap-5">
+						<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
+						<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
+						<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
+						<TeamMember name="Алексей Алексеевич" role="Генеральный директор" img="" />
+					</div>
 				</div>
-				<div className="w-full border border-halfblack bg-darkgray p-8 flex flex-row gap-5 rounded-2xl">
-					<p className="w-[550px] text-halfblack font-medium text-xl">
+
+				<div className="w-full border border-halfblack bg-darkgray p-8 flex flex-row gap-5 rounded-2xl max-[980px]:flex-col">
+					<p className=" min-[980px]:w-1/2 text-halfblack font-medium text-xl flex-grow">
 						Компания #НЕПЕШКОМ предоставляет аренду авто с профессиональным водителем. Это очень удобно для людей, не
 						имеющих водительского удостоверения. Часто услугой пользуются бизнесмены, которые ценят каждую минуту
 						времени и даже во время поездки занимаются делами.
@@ -132,9 +133,9 @@ export default function About() {
 						знать, что сможете уехать домой в каком бы состоянии ни были. Ведь таксисты не всегда соглашаются брать
 						захмелевшего клиента.
 					</p>
-					<div className="w-[550px] h-[448px] relative bg-tint rounded-2xl border border-halfblack z-10">
+					<div className=" min-[980px]:w-1/2 min-h-[448px] relative bg-tint rounded-2xl border border-halfblack z-10 flex-grow">
 						<Image
-							src="/static/about5.jpg"
+							src="/static/about5.webp"
 							alt=""
 							fill
 							style={{

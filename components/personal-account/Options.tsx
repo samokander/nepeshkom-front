@@ -1,10 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PersonalDataContext } from "@/components/Context";
+import { useRouter } from "next/router";
+import { getLocalStorageClientData } from "../utils/getLocalStorage";
 
 export default function Options() {
+  const router = useRouter();
   const { selectedOption, setSelectedOption } = useContext(
     PersonalDataContext
   );
+
+  const logout = () => {
+    localStorage.removeItem('nepeshkom_phoneNumber')
+    localStorage.removeItem('nepeshkom_cliendId')
+    router.push('/auth')
+  }
+
+  useEffect(() => {
+    if(!getLocalStorageClientData().phoneNumber) logout()
+  }, []);
+
+  
 
   return (
     <div
@@ -46,7 +61,7 @@ export default function Options() {
 
       <div className="cursor-pointer select-none">
         <span className=" underline text-[16px] leading-5 font-bold text-error">
-          <button>Выйти из аккаунта</button>
+          <button onClick={() => logout()}>Выйти из аккаунта</button>
         </span>
       </div>
     </div>

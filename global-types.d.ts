@@ -1,43 +1,42 @@
 type carInfoProps = {
-  features: featuresType;
-  equipment: equipmentType;
+	features: featuresType;
 };
 
 type featuresType = {
-  [key: string]: defaultField;
-  brand: defaultField;
-  model: defaultField;
-  year_of_manufacture: defaultField;
-  color: defaultField;
-  body: defaultField;
-  drive: defaultField;
-  engine_displacementd: defaultField;
-  gearbox: defaultField;
-  engine_power: defaultField;
-  fuel: defaultField;
-  steering_wheel: defaultField;
-  insurance: defaultField;
+	[key: string]: defaultField;
+	brand: defaultField;
+	model: defaultField;
+	year_of_manufacture: defaultField;
+	color: defaultField;
+	body: defaultField;
+	drive: defaultField;
+	engine_displacementd: defaultField;
+	gearbox: defaultField;
+	engine_power: defaultField;
+	fuel: defaultField;
+	steering_wheel: defaultField;
+	insurance: defaultField;
 };
 
 type equipmentType = {
-  [key: string]: defaultField;
-  conditioner: defaultField;
-  alarm_and_autorun: defaultField;
-  multimedia: defaultField;
-  tires: defaultField;
-  tinting: defaultField;
+	[key: string]: defaultField;
+	conditioner: defaultField;
+	alarm_and_autorun: defaultField;
+	multimedia: defaultField;
+	tires: defaultField;
+	tinting: defaultField;
 };
 
 type defaultField = {
-  title: string;
-  data: string;
+	title: string;
+	data: string;
 };
 
 type accordionProps = {
-  header: string;
-  faq?: defaultField[];
+	header: string | undefined;
+	faq?: defaultField[];
 };
 
 type bookingProps = {
-  carId: string | string[] | undefined;
+	carId: string | string[] | undefined;
 };

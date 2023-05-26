@@ -1,4 +1,8 @@
+import { AppState } from "@/store/store";
 import Image from "next/image";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import useFetchTermsContent from "../hooks/useFetchTermsContent";
 import Section from "../Section";
 
 export default function Minimal() {
@@ -7,12 +11,15 @@ export default function Minimal() {
 			<span className="text-primary">Минимальные</span> условия проката
 		</h1>
 	);
+
+	const terms = useSelector((state: AppState) => state.rentTerms)?.minRent;
+
 	return (
 		<Section header={header} slogan="">
 			<div className="flex justify-end items-start w-full h-[440px] rounded-2xl flex-col p-5 relative bg-tint">
 				<Image
 					fill
-					src="/static/terms.jpg"
+					src="/static/terms.webp"
 					alt="cars"
 					style={{ objectFit: "cover", borderRadius: "24px", zIndex: "-1" }}
 				/>
@@ -28,24 +35,17 @@ export default function Minimal() {
 				</div>
 			</div>
 			<div className="mt-20 grid grid-cols-2 grid-rows-2 gap-5">
-				<div className="bg-darkgray border-solid border border-halfblack p-7 col-span-2 h-[142px] rounded-3xl">
-					<h3 className="font-bold text-2xl text-white mb-2">Минимальный срок аренды – 24 часа</h3>
-					<p className="font-medium text-halfblack text-base">
-						Вместе с «НЕПЕШКОМ» поездки по России становятся комфортными. Воспользуйтесь сервисом уже сегодня. Мир стоит
-						того, чтобы путешествовать, особенно с любимыми!
-					</p>
+				<div className="bg-darkgray border-solid border border-halfblack p-7 col-span-2 min-h-[142px] rounded-3xl">
+					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardFirstTitle}</h3>
+					<p className="font-medium text-halfblack text-base">{terms?.cardFirstText}</p>
 				</div>
-				<div className="bg-darkgray border-solid border border-halfblack p-7 h-[142px] rounded-3xl">
-					<h3 className="font-bold text-2xl text-white mb-2">Стаж от 2х лет</h3>
-					<p className="font-medium text-halfblack text-base">
-						Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.
-					</p>
+				<div className="bg-darkgray border-solid border border-halfblack p-7 min-h-[142px] rounded-3xl">
+					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardSecondTitle}</h3>
+					<p className="font-medium text-halfblack text-base">{terms?.cardSecondText}</p>
 				</div>
-				<div className="bg-darkgray border-solid border border-halfblack p-7 h-[142px] rounded-3xl">
-					<h3 className="font-bold text-2xl text-white mb-2">Без залога и лимита пробега</h3>
-					<p className="font-medium text-halfblack text-base">
-						Более 10 лет мы успешно занимаемся ремонтом и обслуживанием автомобилей.
-					</p>
+				<div className="bg-darkgray border-solid border border-halfblack p-7 min-h-[142px] rounded-3xl">
+					<h3 className="font-bold text-2xl text-white mb-2">{terms?.cardThirdTitle}</h3>
+					<p className="font-medium text-halfblack text-base">{terms?.cardThirdText}</p>
 				</div>
 			</div>
 		</Section>
