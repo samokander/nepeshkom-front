@@ -4,12 +4,12 @@ import { Dispatch, SetStateAction, useState } from "react";
 type Fields = string[];
 
 type verificationParams = {
-  clientIntegrationId?: string;
-  clientPhone?: string;
-  requestSource?: string;
-  documentsUrls: string[];
-  requestDealTypeId: string | number;
-  requestFilialId: string | number;
+  ClientIntegrationId?: string;
+  ClientPhone?: string | null;
+  RequestSource?: string;
+  DocumentsUrls: string[];
+  RequestDealTypeId: string | number;
+  RequestFilialId: string | number;
 };
 
 export default function DocumentsModal({
@@ -30,9 +30,12 @@ export default function DocumentsModal({
     const baseUrl = process.env
       .NEXT_PUBLIC_ADD_VERIFICATION_ROUTE as string;
     const params: verificationParams = {
-      documentsUrls: documentInputDatas,
-      requestDealTypeId: "",
-      requestFilialId: "",
+      ClientPhone: localStorage.getItem(
+        "nepeshkom_phoneNumber"
+      ),
+      DocumentsUrls: documentInputDatas,
+      RequestDealTypeId: "",
+      RequestFilialId: "",
     };
     axios.post(baseUrl, {
       params: params,
@@ -42,7 +45,7 @@ export default function DocumentsModal({
   function handleChangeData(index: number, value: string) {
     const updated = [...documentInputDatas];
     updated[index] = value;
-    setDocumentInputDatas(updated);
+    setDocumentInputDatas(() => updated);
   }
 
   function handleAddDocument() {
@@ -82,22 +85,16 @@ export default function DocumentsModal({
               <div key={index} className="flex flex-row">
                 <div className="flex-row w-[95%]">
                   <div className="flex flex-row bg-white h-[52px] w-full rounded-[12px] items-center mr-3">
-                    <label
-                      htmlFor="documents-input"
-                      className="text-center hidden"
-                    >
-                      Документ*
-                    </label>
                     <input
                       placeholder="Ссылка на документ*"
                       type="text"
                       className="w-full h-full rounded-[12px] px-4"
-                      onChange={(event) =>
+                      onChange={(event) => {
                         handleChangeData(
                           index,
                           event.target.value
-                        )
-                      }
+                        );
+                      }}
                       value={el}
                     />
                   </div>
@@ -117,22 +114,16 @@ export default function DocumentsModal({
               <div key={index} className="flex flex-row">
                 <div className="flex-row w-[95%]">
                   <div className="flex flex-row bg-white h-[52px] w-full rounded-[12px] items-center mr-3">
-                    <label
-                      htmlFor="documents-input"
-                      className="text-center hidden"
-                    >
-                      Документ*
-                    </label>
                     <input
                       placeholder="Ссылка на документ*"
                       type="text"
                       className="w-full h-full rounded-[12px] px-4"
-                      onChange={(event) =>
+                      onChange={(event) => {
                         handleChangeData(
                           index,
                           event.target.value
-                        )
-                      }
+                        );
+                      }}
                       value={el}
                     />
                   </div>

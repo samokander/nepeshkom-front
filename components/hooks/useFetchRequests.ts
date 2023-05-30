@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // не готово
 export default function useFetchRequests(
-  clientId: number | string,
+  clientId: null | string,
   setLoaded: React.Dispatch<React.SetStateAction<boolean>>
 ): [
   Request[],
@@ -15,10 +15,18 @@ export default function useFetchRequests(
   useEffect(() => {
     (async () => {
       try {
-        const resp = (await axios.post(baseUrl))
-          .data as Request[];
-        setRequests(resp);
-        setLoaded(true);
+        if (clientId) {
+          const resp = (
+            await axios.post(baseUrl, {
+              body: {
+                ClientIntegrationId: clientId,
+                RentRequestDealTypeId: 31843,
+              },
+            })
+          ).data as Request[];
+          setRequests(resp);
+          setLoaded(true);
+        }
       } catch (err) {
         console.error(err);
       }

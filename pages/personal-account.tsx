@@ -32,10 +32,14 @@ function PersonalDataContextProvider({
 
 export default function PersonalAccount() {
   const [selectedOption, setSelectedOption] =
-    useState<PersonalAccountOption>(1);
+    useState<PersonalAccountOption>(0);
 
   const [isDocumentsModalOpen, setIsDocumentsModalOpen] =
     useState(false);
+  const [
+    isPersonalDataModalOpen,
+    setIsPersonalDataModalOpen,
+  ] = useState(false);
 
   // if (
   //   !localStorage.getItem("nepeshkom_cliendId") ||
@@ -55,6 +59,8 @@ export default function PersonalAccount() {
             contextValue={{
               selectedOption,
               setSelectedOption,
+              isModalOpen: isPersonalDataModalOpen,
+              setIsModalOpen: setIsPersonalDataModalOpen,
             }}
           >
             <PersonalData />

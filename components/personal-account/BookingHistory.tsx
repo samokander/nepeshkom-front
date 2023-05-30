@@ -3,13 +3,8 @@ import Options from "./Options";
 import AutoCard from "@/@types/AutoCard";
 import useFetchRequests from "../hooks/useFetchRequests";
 import { useState } from "react";
-function BookedCarCard() {
-  const [loaded, setLoaded] = useState(false);
-  const [requests, setRequests] = useFetchRequests(
-    "",
-    setLoaded
-  );
 
+function BookedCarCard() {
   return (
     <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
       <div className="flex flex-row gap-x-5 mb-5">
@@ -91,12 +86,14 @@ function BookedCarCard() {
 }
 
 export default function BookingHistory() {
+  const clientId = localStorage.getItem(
+    "nepeshkom_cliendId"
+  );
   const [loaded, setLoaded] = useState(false);
   const [requests, setRequests] = useFetchRequests(
-    1,
+    clientId,
     setLoaded
   );
-  const history = requests.map((request) => {});
   return (
     <Section header="">
       <div className="flex flex-row gap-[20px] h-full align-top w-full">
@@ -105,8 +102,10 @@ export default function BookingHistory() {
         <Options />
         <div className="w-[75%]">
           <h1 className=" text-white text-4xl font-bold mb-7 w-full">
-            Все заявки{" "}
-            <span className="opacity-40">(3)</span>
+            Все заявки {""}
+            <span className="opacity-40">
+              ({requests.length})
+            </span>
           </h1>
           <div className="grid auto-rows-max gap-7 ">
             {requests.map((request, index) => {

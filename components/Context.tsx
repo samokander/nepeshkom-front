@@ -11,6 +11,8 @@ export interface PersonalDataContextProps {
   setSelectedOption: Dispatch<
     SetStateAction<PersonalAccountOption>
   >;
+  isModalOpen?: boolean;
+  setIsModalOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface CarInfoContextProps {

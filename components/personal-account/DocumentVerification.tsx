@@ -14,8 +14,7 @@ export default function DocumentVerification({
     <Section header="">
       {isOpen ? (
         <>
-          <div className="fixed inset-0 bg-background opacity-50"></div>
-          <div className="flex justify-center items-center">
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-background bg-opacity-80">
             <DocumentsModal
               isOpen={isOpen}
               setIsOpen={setIsOpen}
