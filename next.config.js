@@ -2,7 +2,12 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ["i07.xlombard.ru"],
+		remotePatterns: [
+			{
+			  protocol: "http",
+			  hostname: "**.xlombard.ru",
+			},
+		  ],
 	},
     eslint: {
       ignoreDuringBuilds: true,
