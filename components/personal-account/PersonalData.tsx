@@ -1,11 +1,10 @@
 import Section from "@/components/Section";
 import Options from "./Options";
-import { PersonalDatatOptionProps } from "@/pages/personal-account";
 import { useContext, useEffect, useState } from "react";
 import { getClientsByPhoneNumber } from "../hooks/getFetchClientData";
 import Client from "@/@types/Client";
 import { PersonalDataContext } from "../Context";
-import PersonalDataModal from "./PersonalDataModal";
+import DocumentsModal from "./DocumentsModal";
 
 export default function PersonalData() {
   const [client, setClient] = useState<Client>();
@@ -31,7 +30,7 @@ export default function PersonalData() {
       {isModalOpen && setIsModalOpen ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-background bg-opacity-80">
-            <PersonalDataModal
+            <DocumentsModal
               isOpen={isModalOpen}
               setIsOpen={setIsModalOpen}
             />

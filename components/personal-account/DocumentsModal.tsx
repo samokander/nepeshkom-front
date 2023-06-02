@@ -34,12 +34,10 @@ export default function DocumentsModal({
         "nepeshkom_phoneNumber"
       ),
       DocumentsUrls: documentInputDatas,
-      RequestDealTypeId: "",
-      RequestFilialId: "",
+      RequestDealTypeId: 62841,
+      RequestFilialId: 62793,
     };
-    axios.post(baseUrl, {
-      params: params,
-    });
+    axios.post(baseUrl, params);
   };
 
   function handleChangeData(index: number, value: string) {

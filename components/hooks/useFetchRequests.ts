@@ -18,10 +18,8 @@ export default function useFetchRequests(
         if (clientId) {
           const resp = (
             await axios.post(baseUrl, {
-              body: {
-                ClientIntegrationId: clientId,
-                RentRequestDealTypeId: 31843,
-              },
+              ClientIntegrationId: clientId,
+              RentRequestDealTypeId: 31843,
             })
           ).data as Request[];
           setRequests(resp);

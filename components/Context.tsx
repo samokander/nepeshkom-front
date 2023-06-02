@@ -13,6 +13,7 @@ export interface PersonalDataContextProps {
   >;
   isModalOpen?: boolean;
   setIsModalOpen?: Dispatch<SetStateAction<boolean>>;
+  data?: string[];
 }
 
 export interface CarInfoContextProps {

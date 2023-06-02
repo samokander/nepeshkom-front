@@ -13,7 +13,7 @@ export default interface Request {
   CurrentStep?: string;
   Steps?: object;
   ContractIds: string[];
-  AutoId: string | number;
+  AutoId: string | string[];
   RentFromTime: Date | string;
   RentToTime: Date | string;
   RentSum: number | string;
