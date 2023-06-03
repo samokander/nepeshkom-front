@@ -141,7 +141,7 @@ export default function BookingHistory() {
       const parsedParams = await Promise.all(promiseParams);
       setBookingHistoryParams(() => parsedParams);
     })();
-  }, []);
+  }, [requests]);
 
   async function parseRequest(
     req: Request,
