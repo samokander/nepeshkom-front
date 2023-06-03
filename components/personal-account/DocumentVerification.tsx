@@ -2,6 +2,7 @@ import Section from "@/components/Section";
 import Options from "./Options";
 import { Dispatch, SetStateAction, useState } from "react";
 import DocumentsModal from "./DocumentsModal";
+import useMobile from "../hooks/useMobile";
 
 export default function DocumentVerification({
   isOpen,
@@ -10,6 +11,7 @@ export default function DocumentVerification({
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+  const isMobile = useMobile(840);
   return (
     <Section header="">
       {isOpen ? (
@@ -24,15 +26,15 @@ export default function DocumentVerification({
       ) : (
         <></>
       )}
-      <div className="flex flex-row gap-[20px] h-full align-top w-full">
+      <div className={`${isMobile ? "" : "flex flex-wrap flex-row"} gap-[20px] h-full align-top w-full`}>
         {/* options */}
-        <Options />
+        <Options isMobile={isMobile} />
         {/* info */}
-        <div className="w-[75%] h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
+        <div className="grow h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
           <h1 className=" text-white text-4xl font-bold mb-7">
             Паспортные данные
           </h1>
-          <div className="grid grid-rows-4 grid-cols-3 gap-5 w-full mb-[9%]">
+          <div className={`${isMobile ? "" : "grid grid-rows-4 grid-cols-3"} gap-5 w-full mb-[9%]`}>
             <div className=" col-start-1">
               <span className="text-[#919191] font-medium text-[12px]">
                 Серия*

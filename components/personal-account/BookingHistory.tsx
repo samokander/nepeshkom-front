@@ -5,6 +5,7 @@ import useFetchRequests from "../hooks/useFetchRequests";
 import { useEffect, useState } from "react";
 import { getAutoById } from "../hooks/helpers/getAutoById";
 import XImage from "@/@types/XImage";
+import useMobile from "../hooks/useMobile";
 
 type BookedCarCardProps = {
   markaModel: string;
@@ -122,6 +123,7 @@ export default function BookingHistory() {
     "nepeshkom_cliendId"
   );
   const [loaded, setLoaded] = useState(false);
+  const isMobile = useMobile(840);
 
   const [bookingHistoryParams, setBookingHistoryParams] =
     useState<Array<BookedCarCardProps>>([]);
@@ -184,11 +186,11 @@ export default function BookingHistory() {
 
   return (
     <Section header="">
-      <div className="flex flex-row gap-[20px] h-full align-top w-full">
+      <div className={`${isMobile ? "" : "flex flex-wrap flex-row"} gap-[20px] h-full align-top w-full`}>
         {/* options */}
 
-        <Options />
-        <div className="w-[75%]">
+        <Options isMobile={isMobile}/>
+        <div className="grow">
           <h1 className=" text-white text-4xl font-bold mb-7 w-full">
             Все заявки {""}
             <span className="opacity-40">
