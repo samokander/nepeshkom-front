@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "**.xlombard.ru",
       },
+      {
+        protocol: "http",
+        hostname: "**.xlombard.ru",
+      },
     ],
   },
   eslint: {
