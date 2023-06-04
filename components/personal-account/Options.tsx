@@ -3,7 +3,7 @@ import { PersonalDataContext } from "@/components/Context";
 import { useRouter } from "next/router";
 import { getLocalStorageClientData } from "../utils/getLocalStorage";
 
-export default function Options() {
+export default function Options(isMobile: boolean = true) {
   const router = useRouter();
   const { selectedOption, setSelectedOption } = useContext(
     PersonalDataContext
@@ -23,8 +23,8 @@ export default function Options() {
 
   return (
     <div
-      className="w-[25%] h-[65%] max-h-[408px] bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-5 flex flex-col gap-[20px] items-center
-            text-[16px] font-bold text-primary"
+      className={`h-[65%] max-h-[408px] ${isMobile ? "" : "bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px]"} p-5 flex flex-col gap-[20px] items-center
+            text-[16px] font-bold text-primary`}
     >
       <button
         className={
