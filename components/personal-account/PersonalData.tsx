@@ -54,7 +54,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Фамилия*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.LastName}
               </div>
             </div>
@@ -62,7 +62,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Имя*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.FirstName}
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Отчество*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.Patronimic}
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Телефон*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Phones?.[0]}
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Дата рождения*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.BirthDate}
               </div>
             </div>
