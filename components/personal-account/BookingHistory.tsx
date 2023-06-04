@@ -21,6 +21,12 @@ type BookedCarCardProps = {
   defaultPrice: number;
 };
 
+const changeToHttp = (url: string) => {
+  if (url.startsWith("https")) {
+    return url.replace('https', 'http')
+  } else return url
+}
+
 function BookedCarCard(props: BookedCarCardProps) {
   const isMobile = useMobile(840);
   function addLeadingZeros(n: number) {
@@ -38,7 +44,7 @@ function BookedCarCard(props: BookedCarCardProps) {
           <div className="aspect-w-1 aspect-h-1">
             <img
               className="object-cover"
-              src={props.imgUrl.url}
+              src={changeToHttp(props.imgUrl.url)}
               alt="Изображение"
             />
           </div>
