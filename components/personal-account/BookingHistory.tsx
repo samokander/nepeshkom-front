@@ -6,6 +6,7 @@ import useFetchRequests from "../hooks/useFetchRequests";
 import { useEffect, useState } from "react";
 import { getAutoById } from "../hooks/helpers/getAutoById";
 import XImage from "@/@types/XImage";
+import Image from "next/image";
 import useMobile from "../hooks/useMobile";
 
 type BookedCarCardProps = {
@@ -41,11 +42,14 @@ function BookedCarCard(props: BookedCarCardProps) {
   return (
     <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
       <div className={`flex flex-row gap-x-5 mb-5 ${isMobile ? "flex-wrap": ""}`}>
-        <div className="w-[248px] h-[160px] overflow-hidden rounded-[16px]">
+        <div className={`h-[160px] overflow-hidden rounded-[16px] ${isMobile ? "" : "w-[248px]"}`}>
           <div className="aspect-w-1 aspect-h-1">
-            <img
+            <Image
               className="object-cover"
               src={changeToHttp(props.imgUrl.url)}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt="Изображение"
             />
           </div>
