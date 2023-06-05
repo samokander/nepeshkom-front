@@ -22,6 +22,7 @@ type BookedCarCardProps = {
 };
 
 const changeToHttp = (url: string) => {
+  console.log(url)
   if (url.startsWith("https")) {
     return url.replace('https', 'http')
   } else return url
