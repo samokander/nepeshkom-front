@@ -99,11 +99,11 @@ function BookedCarCard(props: BookedCarCardProps) {
         </div>
       </div>
       <div className={` bg-background rounded-[12px] border-border_lightgray border p-4 flex ${isMobile ? "flex-col-reverse" : "h-[100px] flex-row " }`}>
-        <div className="text-white w-[35%]">
+        <div className={`text-white ${isMobile ? "" : "w-[35%]" }`}>
           <span className="opacity-40 font-medium text-[16px]">
             Итоговая стоимость:
           </span>
-          <h2 className=" font-bold text-[30px]">
+          <h2 className=" font-bold text-[30px] ">
             {props.sum} ₽
           </h2>
         </div>
