@@ -32,15 +32,12 @@ export default function ContactInfo() {
 					</div>
 				</div>
 				<div className="col-span-3 row-span-1 flex flex-col text-superdarkgray place-self-stretch">
-					<a className="mb-3">Политика конфиденциальности</a>
-					<a className="mb-3">Пользовательское соглашение</a>
+					<a className="mb-3 overflow-hidden">Политика конфиденциальности</a>
+					<a className="mb-3 overflow-hidden">Пользовательское соглашение</a>
 					<div className="flex flex-row gap-5">
 						<WhatsappIcon />
 						<TelegramIcon />
 					</div>
-				</div>
-				<div className="col-span-3 row-span-1 w-full place-self-end flex flex-row">
-					<p className="text-superdarkgray">Техническая поддержка: support.mail@ru</p>
 				</div>
 			</div>
 			<YMaps>

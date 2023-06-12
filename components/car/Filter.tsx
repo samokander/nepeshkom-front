@@ -10,6 +10,7 @@ import HTMLCalendar from "../HTMLCalendar";
 import { useDispatch } from "react-redux";
 import { setAutos, setLoading } from "@/store/store";
 import convertDateFormat from "../utils/convertDateFormat";
+import useMobile from "../hooks/useMobile";
 
 export default function Filter() {
 	const [showFilter, setShowFilter] = useState(false);
@@ -26,6 +27,8 @@ export default function Filter() {
 	const dispatch = useDispatch();
 
 	const filters = useFetchFilters();
+
+	const mobile = useMobile(678);
 
 	async function handleFilterClick() {
 		dispatch(setLoading(true));
@@ -64,18 +67,17 @@ export default function Filter() {
 			<div className="h-max w-full flex flex-col relative">
 				<div
 					className={
-						"flex flex-row justify-between w-full bg-darkgray h-24 items-center px-5" +
+						"flex flex-row justify-between w-full bg-darkgray min-h-24 gap-5 flex-wrap py-5 items-center px-5 max-[678px]:justify-center" +
 						(showFilter
 							? " rounded-t-2xl border-x border-x-halfblack border-t border-t-halfblack"
 							: " rounded-2xl border border-halfblack")
 					}>
-					<div className="flex flex-row gap-5 items-center h-fit">
-						<div className="flex flex-row flex-wrap gap-3 items-center">
+					<div className="flex flex-row gap-5 items-center h-fit flex-wrap justify-center">
+						<div className="flex flex-row gap-3 items-center flex-wrap">
 							<HTMLCalendar date={fromValue} setDate={setFromValue} />
-							<p className="font-bold text-white">-</p>
+							{!mobile && <p className="font-bold text-white">-</p>}
 							<HTMLCalendar date={toValue} setDate={setToValue} />
 						</div>
-
 						<FilterIcon showFilter={showFilter} setShowFilter={setShowFilter} />
 					</div>
 					<Button primary on_click={handleFilterClick}>
@@ -83,13 +85,21 @@ export default function Filter() {
 					</Button>
 				</div>
 				{showFilter && (
-					<div className="flex flex-row justify-evenly absolute w-full h-24 top-full bg-darkgray  border-x border-x-halfblack border-b border-b-halfblack items-center justify-items-stretch gap-5 px-5 rounded-b-2xl">
+					<div className="flex flex-row justify-evenly max-[678px]:flex-wrap absolute w-full h-fit min-h-24 py-5 top-full bg-darkgray  border-x border-x-halfblack border-b border-b-halfblack items-center gap-5 px-5 rounded-b-2xl z-50">
 						<Select
 							options={filters.body}
 							isMulti
 							className="w-full"
 							placeholder="Кузов"
-							styles={{ control: (styles) => ({ ...styles, height: "52px", overflowY: "auto", borderRadius: 12 }) }}
+							styles={{
+								control: (styles) => ({
+									...styles,
+									height: "52px",
+									overflowY: "auto",
+									borderRadius: 12,
+									flexGrow: "grow",
+								}),
+							}}
 							onChange={(newValue) => setBody(newValue.map((el) => el.label))}
 						/>
 						<Select

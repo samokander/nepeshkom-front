@@ -66,7 +66,7 @@ export default function Autos() {
 						<option value={"pow"}>Мощнее</option>
 					</select>
 				</div>
-				<div className="w-full flex flex-row flex-wrap gap-5 mb-36">
+				<div className="w-full flex flex-row flex-wrap gap-5 mb-36 justify-center">
 					{!loading
 						? autos?.map((auto, index) => <CarCard {...auto} key={index} />)
 						: Array(6)

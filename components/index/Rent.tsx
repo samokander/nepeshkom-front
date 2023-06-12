@@ -1,4 +1,4 @@
-import usefetchAutos from "@/components/hooks/useFetchAutos";
+import useFetchAutos from "@/components/hooks/useFetchAutos";
 import { AppState } from "@/store/store";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,10 +17,10 @@ export default function Rent() {
 	const [fromValue, setFromValue] = useState("");
 	const [toValue, setToValue] = useState("");
 
-	usefetchAutos();
-
 	const autos = useSelector((state: AppState) => state.autos);
 	const loading = useSelector((state: AppState) => state.loading);
+
+	useFetchAutos();
 
 	const header = (
 		<div className="md:grid md:grid-cols-11 md:grid-rows-1 gap-5 md:mb-12 flex flex-col">
@@ -72,7 +72,7 @@ export default function Rent() {
 				</div>
 				<div className="flex flex-row gap-5 flex-nowrap overflow-x-auto max-w-[99vw]">
 					{autos?.slice(0, 4).map((auto, index) => {
-						return !loading ? <MiniCarCard {...auto} key={index} /> : <MiniCarCardLoader />;
+						return !loading ? <MiniCarCard {...auto} key={index} /> : <MiniCarCardLoader key={index} />;
 					})}
 				</div>
 			</div>
