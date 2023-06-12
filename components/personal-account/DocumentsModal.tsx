@@ -35,7 +35,7 @@ export default function DocumentsModal({
       ),
       DocumentsUrls: documentInputDatas,
       RequestDealTypeId: 62841,
-      RequestFilialId: 62793,
+      RequestFilialId: 1,
     };
     axios.post(baseUrl, params);
   };

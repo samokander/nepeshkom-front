@@ -109,7 +109,7 @@ export default function Options(props: {
         </div>
       </div>
       {/* ПЕРЕКЛЮЧАТЕЛЬ 1 */}
-      <div className="flex flex-row items-center mb-[21px]">
+      {/* <div className="flex flex-row items-center mb-[21px]">
         <label className="switch">
           <input
             type="checkbox"
@@ -123,9 +123,9 @@ export default function Options(props: {
         <p className="ml-[22px] font-semibold text-[16px] text-white opacity-50">
           Доставка до аэропорта - 1500 ₽
         </p>
-      </div>
+      </div> */}
       {/* ПЕРЕКЛЮЧАТЕЛЬ 2 */}
-      <div className="flex flex-row items-center mb-20">
+      {/* <div className="flex flex-row items-center mb-20">
         <label className="switch">
           <input
             type="checkbox"
@@ -139,7 +139,7 @@ export default function Options(props: {
         <p className="ml-[22px] font-semibold text-[16px] text-white opacity-50">
           Доставка по городу - 750 ₽
         </p>
-      </div>
+      </div> */}
       {/* extra */}
       {cityDelivery || airportDelivery ? (
         <div
