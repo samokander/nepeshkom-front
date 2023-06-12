@@ -21,7 +21,10 @@ export default function Filter() {
 	const [transmission, setTransmission] = useState<string[]>([]);
 	const [body, setBody] = useState<string[]>([]);
 
-	const [fromValue, setFromValue] = useState<string>("");
+	const [fromValue, setFromValue] = useState<string>(() => {
+		const date = new Date();
+		return convertDateFormat(date.toLocaleDateString());
+	});
 	const [toValue, setToValue] = useState<string>("");
 
 	const dispatch = useDispatch();
@@ -33,12 +36,11 @@ export default function Filter() {
 	async function handleFilterClick() {
 		dispatch(setLoading(true));
 		try {
-			console.log(fromValue);
 			const autos = (
 				await axios.get(process.env.NEXT_PUBLIC_SEARCH_WITH_FULL_DATA as string, {
 					data: {
-						DateFrom: convertDateFormat(fromValue) + " 00:00:00",
-						DateTo: convertDateFormat(toValue) + " 00:00:00",
+						DateFrom: fromValue.replaceAll("-", ".") + " 00:00:00",
+						DateTo: (toValue ? toValue.replaceAll("-", ".") : "9999.12.31") + " 00:00:00",
 						Brands: brand,
 						Colors: color,
 						Transmissions: transmission,
@@ -49,8 +51,11 @@ export default function Filter() {
 				})
 			).data as AutoCard[];
 			dispatch(setAutos(autos));
-		} catch {}
-		dispatch(setLoading(false));
+			dispatch(setLoading(false));
+		} catch (e) {
+			console.log(e);
+			dispatch(setLoading(false));
+		}
 	}
 
 	useEffect(() => {
