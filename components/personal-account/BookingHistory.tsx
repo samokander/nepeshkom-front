@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Section from "@/components/Section";
 import Options from "./Options";
 import Request from "@/@types/Request";
@@ -5,6 +6,8 @@ import useFetchRequests from "../hooks/useFetchRequests";
 import { useEffect, useState } from "react";
 import { getAutoById } from "../hooks/helpers/getAutoById";
 import XImage from "@/@types/XImage";
+import Image from "next/image";
+import useMobile from "../hooks/useMobile";
 
 type BookedCarCardProps = {
   markaModel: string;
@@ -16,9 +19,18 @@ type BookedCarCardProps = {
   sum: number | string;
   imgUrl: XImage;
   numberId: number;
+  defaultPrice: number;
 };
 
+const changeToHttp = (url: string) => {
+  console.log(url)
+  if (url.startsWith("https")) {
+    return url.replace('https', 'http')
+  } else return url
+}
+
 function BookedCarCard(props: BookedCarCardProps) {
+  const isMobile = useMobile(840);
   function addLeadingZeros(n: number) {
     let paddedNumber = String(n);
     while (paddedNumber.length < 4) {
@@ -29,12 +41,15 @@ function BookedCarCard(props: BookedCarCardProps) {
 
   return (
     <div className=" h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
-      <div className="flex flex-row gap-x-5 mb-5">
-        <div className="w-[248px] h-[160px] overflow-hidden rounded-[16px]">
+      <div className={`flex flex-row gap-x-5 mb-5 ${isMobile ? "flex-wrap": ""}`}>
+        <div className={`h-[160px] overflow-hidden rounded-[16px] ${isMobile ? "" : "w-[248px]"}`}>
           <div className="aspect-w-1 aspect-h-1">
-            <img
+            <Image
               className="object-cover"
-              src={props.imgUrl.url}
+              src={changeToHttp(props.imgUrl.url)}
+              width={1000}
+              height={1000}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt="Изображение"
             />
           </div>
@@ -64,50 +79,50 @@ function BookedCarCard(props: BookedCarCardProps) {
             </span>
           </div>
           {/*  */}
-          <div className=" text-white flex flex-row gap-5">
-            <div className="flex flex-col">
+          <div className={`text-white flex  gap-5 ${isMobile ? "flex-col" : "flex-row"}`}>
+            <div className={`flex ${isMobile ? "flex-row" : "flex-col" }`}>
               <span className="opacity-40">
                 Дата начала аренды:
               </span>
-              <span>
+              <span className={`${isMobile ? "pl-2" : "" }`}>
                 {props.startDate.toLocaleString()}
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className={`flex ${isMobile ? "flex-row" : "flex-col" }`}>
               <span className="opacity-40">
                 Дата конца аренды:
               </span>
-              <span>{props.endDate.toLocaleString()}</span>
+              <span className={`${isMobile ? "pl-2" : "" }`}>{props.endDate.toLocaleString()}</span>
             </div>
           </div>
           {/*  */}
         </div>
       </div>
-      <div className="h-[100px] bg-background rounded-[12px] border-border_lightgray border p-4 flex flex-row">
-        <div className="text-white w-[35%]">
+      <div className={` bg-background rounded-[12px] border-border_lightgray border p-4 flex ${isMobile ? "flex-col-reverse" : "h-[100px] flex-row " }`}>
+        <div className={`text-white ${isMobile ? "" : "w-[35%]" }`}>
           <span className="opacity-40 font-medium text-[16px]">
             Итоговая стоимость:
           </span>
-          <h2 className=" font-bold text-[30px]">
+          <h2 className=" font-bold text-[30px] ">
             {props.sum} ₽
           </h2>
         </div>
         {/*  */}
         <div className="text-white w-[65%] items-stretch flex flex-col gap-5">
-          <div>
+          {/* <div>
             <span className="opacity-40 font-medium text-[16px] mr-[15%]">
               Доп. услуга
             </span>
             <span className="font-bold text-[16px]">
               Аренда с водителем - 1 200 ₽
             </span>
-          </div>
+          </div> */}
           <div>
             <span className="opacity-40 font-medium text-[16px] mr-[15%]">
-              Доп. услуга
+             Стоимость аренды
             </span>
-            <span className="font-bold text-[16px]">
-              Аренда с водителем - 1 200 ₽
+            <span className={`font-bold text-[16px] ${isMobile ? "flex pb-2" : "" }`}>
+              {props.defaultPrice} / сут
             </span>
           </div>
         </div>
@@ -122,6 +137,7 @@ export default function BookingHistory() {
     "nepeshkom_cliendId"
   );
   const [loaded, setLoaded] = useState(false);
+  const isMobile = useMobile(840);
 
   const [bookingHistoryParams, setBookingHistoryParams] =
     useState<Array<BookedCarCardProps>>([]);
@@ -141,7 +157,7 @@ export default function BookingHistory() {
       const parsedParams = await Promise.all(promiseParams);
       setBookingHistoryParams(() => parsedParams);
     })();
-  }, []);
+  }, [requests]);
 
   async function parseRequest(
     req: Request,
@@ -156,6 +172,7 @@ export default function BookingHistory() {
       startDate: "",
       endDate: "",
       sum: 0,
+      defaultPrice: 0,
       imgUrl: {
         fileId: "",
         fileError: "",
@@ -167,7 +184,7 @@ export default function BookingHistory() {
       },
       numberId: 1,
     };
-    if (autoResponse) {
+    if (autoResponse?.ItemID) {
       result.markaModel = autoResponse.MarkaModelString;
       result.year = autoResponse.AutoYearSt;
       result.transmission =
@@ -176,19 +193,20 @@ export default function BookingHistory() {
       result.startDate = req.RentFromTime;
       result.endDate = req.RentToTime;
       result.sum = req.RentSum;
-      result.imgUrl = autoResponse.Files[0];
+      result.imgUrl = autoResponse?.Files?.[0];
       result.numberId = index + 1;
+      result.defaultPrice = autoResponse.DefaultPrice
     }
     return result;
   }
 
   return (
     <Section header="">
-      <div className="flex flex-row gap-[20px] h-full align-top w-full">
+      <div className={`${isMobile ? "" : "flex flex-wrap flex-row"} gap-[20px] h-full align-top w-full`}>
         {/* options */}
 
-        <Options />
-        <div className="w-[75%]">
+        <Options isMobile={isMobile}/>
+        <div className="grow">
           <h1 className=" text-white text-4xl font-bold mb-7 w-full">
             Все заявки {""}
             <span className="opacity-40">
@@ -197,6 +215,7 @@ export default function BookingHistory() {
           </h1>
           <div className="grid auto-rows-max gap-7 ">
             {bookingHistoryParams.map((param) => {
+              if (param.startDate !== "")
               return (
                 <BookedCarCard
                   key={param.numberId}
@@ -209,6 +228,7 @@ export default function BookingHistory() {
                   sum={param.sum}
                   imgUrl={param.imgUrl}
                   numberId={param.numberId}
+                  defaultPrice={param.defaultPrice}
                 />
               );
             })}

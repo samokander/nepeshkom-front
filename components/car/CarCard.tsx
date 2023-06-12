@@ -27,7 +27,7 @@ export default function CarCard(props: AutoCard) {
 					<Button primary>Арендовать</Button>
 				</Link>
 				<div className="w-full text-center">
-					<p className="font-semibold text-background text-xl">{props.CurrentCost} ₽/сут. </p>
+					<p className="font-semibold text-background text-xl">{props.DefaultPrice} ₽/сут. </p>
 				</div>
 			</div>
 		</div>

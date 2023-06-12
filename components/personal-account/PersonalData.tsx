@@ -5,9 +5,11 @@ import { getClientsByPhoneNumber } from "../hooks/getFetchClientData";
 import Client from "@/@types/Client";
 import { PersonalDataContext } from "../Context";
 import DocumentsModal from "./DocumentsModal";
+import useMobile from "../hooks/useMobile";
 
 export default function PersonalData() {
   const [client, setClient] = useState<Client>();
+  const isMobile = useMobile(840);
   const { isModalOpen, setIsModalOpen } = useContext(
     PersonalDataContext
   );
@@ -39,20 +41,20 @@ export default function PersonalData() {
       ) : (
         <></>
       )}
-      <div className="flex flex-row gap-[20px] h-full align-top w-full">
+      <div className={`${isMobile ? "" : "flex flex-wrap flex-row"}  gap-[20px] h-full align-top w-full`}>
         {/* options */}
-        <Options />
+        <Options isMobile={isMobile}/>
         {/* user-info */}
-        <div className=" w-[75%] h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
+        <div className=" grow h-full bg-[#242424] rounded-[20px] border-[#5B5B5B] border-[1px] p-8">
           <h1 className=" text-white text-4xl font-bold mb-7">
             Личная информация
           </h1>
-          <div className="grid grid-rows-2 grid-cols-6 gap-5 w-full mb-[50px]">
+          <div className={`${isMobile ? "" : "grid grid-rows-2 grid-cols-6"} gap-5 w-full mb-[50px]`}>
             <div className="col-span-2 ">
               <span className="text-[#919191] font-medium text-[12px]">
                 Фамилия*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.LastName}
               </div>
             </div>
@@ -60,7 +62,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Имя*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.FirstName}
               </div>
             </div>
@@ -68,7 +70,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Отчество*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Name?.Patronimic}
               </div>
             </div>
@@ -76,7 +78,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Телефон*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.Phones?.[0]}
               </div>
             </div>
@@ -84,7 +86,7 @@ export default function PersonalData() {
               <span className="text-[#919191] font-medium text-[12px]">
                 Дата рождения*
               </span>
-              <div className="bg-white rounded-[12px] h-[52px] flex justify-center items-center">
+              <div className="bg-white rounded-[12px] h-[52px] flex p-[12px] justify-start items-center">
                 {client?.BirthDate}
               </div>
             </div>

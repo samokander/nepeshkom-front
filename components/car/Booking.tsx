@@ -60,7 +60,7 @@ export default function Booking(props: { autoInfo: AutoCard }) {
 						/>
 					</div>
 
-					<Options price={autoInfo.CurrentCost} autoId={autoInfo.ItemID} />
+					<Options price={autoInfo.DefaultPrice} autoId={autoInfo.ItemID} />
 
 					<CarInfo
 						features={{
