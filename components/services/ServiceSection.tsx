@@ -18,6 +18,7 @@ export default function ServiceSection(props: InfoCardProps) {
 					src={props.imgSrc}
 					alt={props.header}
 					fill
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 					style={{ objectFit: "cover", borderRadius: "24px", zIndex: -1 }}
 				/>
 				<div className="z-10 w-full flex justify-between">
