@@ -37,8 +37,7 @@ export default function Filter() {
 		dispatch(setLoading(true));
 		try {
 			const autos = (
-				await axios.get(process.env.NEXT_PUBLIC_SEARCH_WITH_FULL_DATA as string, {
-					data: {
+				await axios.post(process.env.NEXT_PUBLIC_SEARCH_WITH_FULL_DATA as string, {
 						DateFrom: fromValue.replaceAll("-", ".") + " 00:00:00",
 						DateTo: (toValue ? toValue.replaceAll("-", ".") : "9999.12.31") + " 00:00:00",
 						Brands: brand,
@@ -47,7 +46,6 @@ export default function Filter() {
 						BodyTypes: body,
 						PrivodTypes: priv,
 						AutoClasses: classCode,
-					},
 				})
 			).data as AutoCard[];
 			dispatch(setAutos(autos));

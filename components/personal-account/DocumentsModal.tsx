@@ -35,7 +35,7 @@ export default function DocumentsModal({
       ),
       DocumentsUrls: documentInputDatas,
       RequestDealTypeId: 62841,
-      RequestFilialId: 62793,
+      RequestFilialId: 1,
     };
     axios.post(baseUrl, params);
   };
@@ -59,7 +59,8 @@ export default function DocumentsModal({
   }
 
   return (
-    <div className="fixed w-[40%] h-auto bg-darkgray p-8 rounded-[16px] bottom-2/4">
+    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-background bg-opacity-80">
+      <div className=" h-auto bg-darkgray p-8 rounded-[16px] bottom-2/4">
       <button
         className="absolute top-5 right-5"
         onClick={() => setIsOpen(() => false)}
@@ -158,6 +159,7 @@ export default function DocumentsModal({
           Отмена
         </button>
       </div>
+    </div>
     </div>
   );
 }
