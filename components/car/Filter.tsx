@@ -53,7 +53,6 @@ export default function Filter() {
 			dispatch(setAutos(autos));
 			dispatch(setLoading(false));
 		} catch (e) {
-			console.log(e);
 			dispatch(setLoading(false));
 		}
 	}

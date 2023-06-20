@@ -20,7 +20,6 @@ export default function Car() {
 		const awaitGetAuto = async () => {
 			const res = await getAutoById(car);
 			setAuto(res);
-			console.log(res);
 		};
 
 		awaitGetAuto();

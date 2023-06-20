@@ -12,8 +12,8 @@ export default function Button(props: PropsWithChildren & buttonProps) {
 	return (
 		<span
 			className={
-				`block min-w-[150px] h-14 text-center rounded-xl text-base py-4 px-4 font-bold hover:cursor-pointer` +
-				(props.primary ? " bg-primary text-white" : ` bg-lightgray border-solid text-primary w-[194px]`) +
+				`flex justify-center items-center text-center min-w-[150px] h-14 rounded-xl text-base px-4 font-bold cursor-pointer` +
+				(props.primary ? " bg-primary text-white" : ` bg-lightgray border-solid text-primary`) +
 				` ${props.className}`
 			}
 			onClick={props.on_click}>

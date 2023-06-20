@@ -12,17 +12,17 @@ export default function ServiceSection(props: InfoCardProps) {
 	}
 
 	return (
-		<section className="rounded-3xl bg-darkgray border border-solid border-slightblack -z-10">
+		<section className="rounded-3xl bg-darkgray border border-solid border-slightblack">
 			<div className="relative aspect-video w-full h-[440px] items-end justify-between flex p-8 bg-tint rounded-3xl">
 				<Image
 					src={props.imgSrc}
 					alt={props.header}
 					fill
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-					style={{ objectFit: "cover", borderRadius: "24px", zIndex: -1 }}
+					style={{ objectFit: "cover", borderRadius: "24px", zIndex: 0 }}
 				/>
 				<div className="z-10 w-full flex justify-between">
-					<h1 className="font-bold md:text-4xl mb-2 text-xl text-white z-10">{props.header}</h1>
+					<h1 className="font-bold md:text-4xl mb-2 text-xl text-white">{props.header}</h1>
 					<Button primary on_click={handleRedirect}>
 						Заказать услугу
 					</Button>

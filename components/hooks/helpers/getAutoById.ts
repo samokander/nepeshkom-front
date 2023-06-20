@@ -6,7 +6,6 @@ export const getAutoById = async (autoId: string | string[]) => {
 
 	try {
 		const res = await axios.get(`${baseUrl}/${autoId}`);
-		console.log(res.data);
 		return res.data as AutoCard;
 	} catch (error) {
 		console.log(error);
